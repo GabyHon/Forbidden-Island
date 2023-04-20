@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] floodCards;
     [SerializeField] private GameObject[] treasures;
     [SerializeField] private GameObject[] players;
-    
+    [SerializeField] private GameObject islandTiles = new GameObject();
+
+
     public void Start()
     {
         TileManager();
