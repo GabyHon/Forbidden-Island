@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] treasures;
     [SerializeField] private GameObject[] players;
     public GameObject shuffler;
+    public GameObject sorter;
 
 
     public void Start()
@@ -19,6 +20,10 @@ public class GameManager : MonoBehaviour
         var _shuffler = shuffler.GetComponent<CardShuffler>();
         _shuffler._object = tiles;
         _shuffler.ShuffleCards();
+        var _sorter = sorter.GetComponent<TileSorter>();
+        _sorter.positions = boardPositions;
+        _sorter.tiles = tiles;
+        _sorter.Tile_Sorter();
         FloodManager();
         TreasureCardManager();
     }
