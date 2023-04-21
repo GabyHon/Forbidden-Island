@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject tileSorter;
     [SerializeField] private GameObject treasureDeck;
     [SerializeField] private GameObject floodDeck;
-    [SerializeField] private GameObject playerCardShuffler;
+    [SerializeField] private GameObject playerSorter;
 
     public void Start()
     {
@@ -34,8 +34,9 @@ public class GameManager : MonoBehaviour
         var floodShuffler = floodDeck.GetComponent<CardShuffler>();
         floodShuffler._object = floodCards;
         floodShuffler.ShuffleCards();
-        var _playerCardShuffler = playerCardShuffler.GetComponent<CardShuffler>();
-        _playerCardShuffler._object = playerCards;
-        _playerCardShuffler.ShuffleCards();
+        var _playerSorter = playerSorter.GetComponent<PlayerSorter>();
+        _playerSorter._object = playerCards;
+        _playerSorter.player = players;
+        _playerSorter.SortCards();
     }
 }
