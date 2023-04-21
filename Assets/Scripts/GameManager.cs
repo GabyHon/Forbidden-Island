@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,41 +11,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] floodCards;
     [SerializeField] private GameObject[] treasures;
     [SerializeField] private GameObject[] players;
+    public GameObject shuffler;
 
 
     public void Start()
     {
-        TileManager();
-        TileSorter();
+        var _shuffler = shuffler.GetComponent<CardShuffler>();
+        _shuffler._object = tiles;
+        _shuffler.ShuffleCards();
         FloodManager();
         TreasureCardManager();
     }
-
-    private void TileManager()
-    {
-        int maxTiles = tiles.Length;
-        int halfTiles = tiles.Length / 2;
-        for (int i = 0; i < halfTiles; i++)
-        {
-            int position1 = Random.Range(0, maxTiles);
-            int position2 = Random.Range(0, maxTiles);
-            GameObject tile1 = tiles[position1];
-            GameObject tile2 = tiles[position2];
-            tiles[position1] = tile2;
-            tiles[position2] = tile1;
-        }
-    }
-
-    private void TileSorter()
-    {
-        int length = tiles.Length;
-
-        for (int i = 0; i < length; i++)
-        {
-            tiles[i].transform.position = boardPositions[i].transform.position;
-        }
-    }
-
     private void FloodManager()
     {
         int maxTiles = floodCards.Length;
@@ -74,4 +51,5 @@ public class GameManager : MonoBehaviour
             treasureCards[position2] = tile1;
         }
     }
+    
 }
