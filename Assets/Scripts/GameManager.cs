@@ -12,11 +12,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] floodCards;
     [SerializeField] private GameObject[] treasures;
     [SerializeField] private GameObject[] players;
+    [SerializeField] private GameObject[] playerCards;
     [SerializeField] private GameObject tileShuffler;
     [SerializeField] private GameObject tileSorter;
     [SerializeField] private GameObject treasureDeck;
     [SerializeField] private GameObject floodDeck;
-
+    [SerializeField] private GameObject playerCardShuffler;
 
     public void Start()
     {
@@ -33,5 +34,8 @@ public class GameManager : MonoBehaviour
         var floodShuffler = floodDeck.GetComponent<CardShuffler>();
         floodShuffler._object = floodCards;
         floodShuffler.ShuffleCards();
+        var _playerCardShuffler = playerCardShuffler.GetComponent<CardShuffler>();
+        _playerCardShuffler._object = playerCards;
+        _playerCardShuffler.ShuffleCards();
     }
 }
