@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Diver
+  - Engineer
+  - Explorer
+  - Messenger
+  - Navigator
+  - Pilot
   layers:
   - Default
   - TransparentFX
