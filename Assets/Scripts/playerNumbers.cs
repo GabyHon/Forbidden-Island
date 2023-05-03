@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerNumbers : MonoBehaviour
 {
-    [SerializeField] private int howManyPlayers = 2;
+    [SerializeField] private int howManyPlayers = 0;
 
     // Update is called once per frame
     void Update()
@@ -12,13 +12,16 @@ public class playerNumbers : MonoBehaviour
         switch (howManyPlayers)
         {
             case 1:
-                print("3 Players");
+                print("2 Players");
                 break;
             case 2:
+                print("3 Players");
+                break;
+            case 3:
                 print("4 Players");
                 break;
             default:
-                print("2 Players");
+                print("Please choose the number of players");
                 break;
         }
     }
