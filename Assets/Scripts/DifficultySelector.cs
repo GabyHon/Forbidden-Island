@@ -6,7 +6,7 @@ public class DifficultySelector : MonoBehaviour
 {
     public enum DifficultyChosen
     {
-        Novice, Normal, Elite, Legenary
+        Select, Novice, Normal, Elite, Legenary
     }
 
     public DifficultyChosen difficulty;
@@ -16,17 +16,20 @@ public class DifficultySelector : MonoBehaviour
     {
         switch (difficulty)
         {
+            case DifficultyChosen.Select:
+                print("Please select a difficulty");
+                break;
             case DifficultyChosen.Novice:
-                print("Novice level was chosen");
+                print("Novice was chosen");
                 break;
             case DifficultyChosen.Normal:
-                print("Normal level was chosen");
+                print("Normal was chosen");
                 break;
             case DifficultyChosen.Elite:
-                print("Elite level was chosen");
+                print("Elite was chosen");
                 break;
             case DifficultyChosen.Legenary:
-                print("Legendary level was chosen");
+                print("Legendary was chosen");
                 break;
         }
     }

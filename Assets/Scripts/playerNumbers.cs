@@ -6,7 +6,7 @@ public class playerNumbers : MonoBehaviour
 {
     public enum HowManyPlayers
     {
-        Two, Three, Four
+        Select, Two, Three, Four
     }
 
     public HowManyPlayers players;
@@ -16,6 +16,9 @@ public class playerNumbers : MonoBehaviour
     {
         switch (players)
         {
+            case HowManyPlayers.Select:
+                print("Please select the number of players");
+                break;
             case HowManyPlayers.Two:
                 print("2 Players");
                 break;
