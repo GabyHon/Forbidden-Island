@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class DifficultySelector : MonoBehaviour
 {
-    [SerializeField] private int difficulty = 0;
+    public enum DifficultyChosen
+    {
+        Novice, Normal, Elite, Legenary
+    }
+
+    public DifficultyChosen difficulty;
 
     // Update is called once per frame
     void Update()
     {
         switch (difficulty)
         {
-            case 1:
+            case DifficultyChosen.Novice:
                 print("Novice level was chosen");
                 break;
-            case 2:
+            case DifficultyChosen.Normal:
                 print("Normal level was chosen");
                 break;
-            case 3:
+            case DifficultyChosen.Elite:
                 print("Elite level was chosen");
                 break;
-            case 4:
+            case DifficultyChosen.Legenary:
                 print("Legendary level was chosen");
-                break;
-            default:
-                print("Please choose a level");
                 break;
         }
     }
