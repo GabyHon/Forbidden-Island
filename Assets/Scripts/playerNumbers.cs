@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class playerNumbers : MonoBehaviour
 {
-    [SerializeField] private int howManyPlayers = 0;
+    public enum HowManyPlayers
+    {
+        Two, Three, Four
+    }
+
+    public HowManyPlayers players;
 
     // Update is called once per frame
     void Update()
     {
-        switch (howManyPlayers)
+        switch (players)
         {
-            case 1:
+            case HowManyPlayers.Two:
                 print("2 Players");
                 break;
-            case 2:
+            case HowManyPlayers.Three:
                 print("3 Players");
                 break;
-            case 3:
+            case HowManyPlayers.Four:
                 print("4 Players");
-                break;
-            default:
-                print("Please choose the number of players");
                 break;
         }
     }
