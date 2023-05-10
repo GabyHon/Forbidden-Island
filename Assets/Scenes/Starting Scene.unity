@@ -685,7 +685,6 @@ GameObject:
   - component: {fileID: 164439347}
   - component: {fileID: 164439349}
   - component: {fileID: 164439348}
-  - component: {fileID: 164439350}
   m_Layer: 5
   m_Name: Number of Players
   m_TagString: Untagged
@@ -754,22 +753,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164439346}
   m_CullTransparentMesh: 1
---- !u!114 &164439350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164439346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682e13ffc22ae1d4aa1b46f0501fe1ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: 0
-  Two: 0
-  Three: 0
-  Four: 0
 --- !u!1 &267667516
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 267667517}
   - component: {fileID: 267667518}
+  - component: {fileID: 267667519}
   m_Layer: 5
   m_Name: PlayerButtonLayout
   m_TagString: Untagged
@@ -836,6 +820,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &267667519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267667516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 682e13ffc22ae1d4aa1b46f0501fe1ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: 0
+  Two: 0
+  Three: 0
+  Four: 0
 --- !u!1 &396392971
 GameObject:
   m_ObjectHideFlags: 0
