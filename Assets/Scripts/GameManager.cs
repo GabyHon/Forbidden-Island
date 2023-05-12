@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] tiles;
     [SerializeField] private GameObject[] boardPositions;
-    [SerializeField] private GameObject[] treasureCards;
+    [SerializeField] public GameObject[] treasureCards;
     [SerializeField] private GameObject[] floodCards;
     [SerializeField] private GameObject[] treasures;
     [SerializeField] private GameObject[] players;
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject treasureDeck;
     [SerializeField] private GameObject floodDeck;
     [SerializeField] private GameObject playerSorter;
+    private GameObject[] treasureCardsCopy;
 
     public void Start()
     {
@@ -38,5 +39,6 @@ public class GameManager : MonoBehaviour
         _playerSorter._object = playerCards;
         _playerSorter.player = players;
         _playerSorter.SortCards();
+        
     }
 }
