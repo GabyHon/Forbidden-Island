@@ -1,48 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.UI;
 
 public class playerNumbers : MonoBehaviour
 {
-    public enum HowManyPlayers
+    [SerializeField] public bool TwoPlayers, ThreePlayers, FourPlayers = false;
+
+    public void TwoPlayersButton()
     {
-        Select, Two, Three, Four
+        TwoPlayers = true;
+        Debug.Log("Two Players have been selected");
     }
 
-    public HowManyPlayers players;
-
-    public bool Two = false;
-    public bool Three = false;
-    public bool Four = false;
-
-    void Update()
+    public void ThreePlayersButton()
     {
-        switch (players)
-        {
-            case HowManyPlayers.Select:
-                Two = false;
-                Three = false;
-                Four = false;
-                print("Please select the number of players");
-                break;
-            case HowManyPlayers.Two:
-                Two = true;
-                Three = false;
-                Four = false;
-                print("2 Players");
-                break;
-            case HowManyPlayers.Three:
-                Two = false;
-                Three = true;
-                Four = false;
-                print("3 Players");
-                break;
-            case HowManyPlayers.Four:
-                Two = false;
-                Three = false;
-                Four = true;
-                print("4 Players");
-                break;
-        }
+        ThreePlayers = true;
+        Debug.Log("Three Players have been selected");
+    }
+
+    public void FourPlayersButton()
+    {
+        FourPlayers = true;
+        Debug.Log("Four Players have been selected");
+    }
+
+    public void PlayersBackButton()
+    {
+        TwoPlayers = false;
+        ThreePlayers = false;
+        FourPlayers = false;
     }
 }
