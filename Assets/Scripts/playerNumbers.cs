@@ -10,17 +10,23 @@ public class playerNumbers : MonoBehaviour
     public void TwoPlayersButton()
     {
         TwoPlayers = true;
+        ThreePlayers = false;
+        FourPlayers = false;
         Debug.Log("Two Players have been selected");
     }
 
     public void ThreePlayersButton()
     {
+        TwoPlayers = false;
         ThreePlayers = true;
+        FourPlayers = false;
         Debug.Log("Three Players have been selected");
     }
 
     public void FourPlayersButton()
     {
+        TwoPlayers = false;
+        ThreePlayers = false;
         FourPlayers = true;
         Debug.Log("Four Players have been selected");
     }
