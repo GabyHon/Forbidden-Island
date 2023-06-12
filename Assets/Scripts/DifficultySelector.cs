@@ -6,7 +6,7 @@ public class DifficultySelector : MonoBehaviour
 {
     [SerializeField] public bool Novice, Normal, Elite, Legendary = false;
 
-    public void NoiceButton()
+    public void NoviceButton()
     {
         Novice = true;
         Normal = false;
