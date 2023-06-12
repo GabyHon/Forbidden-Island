@@ -65,6 +65,14 @@ public class waterLevel : MonoBehaviour
         LegendaryMarker.SetActive(true);
     }
 
+    public void BackButtonMarkersReset()
+    {
+        NoviceMarker.SetActive(false);
+        NormalMarker.SetActive(false);
+        EliteMarker.SetActive(false);
+        LegendaryMarker.SetActive(false);
+    }
+
     void Start()
     {
         //LevelChecker();
