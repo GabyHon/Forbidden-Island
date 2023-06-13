@@ -24,7 +24,7 @@ public class TurnManager : MonoBehaviour
 
     private void Update()
     {
-        var tdLength = _gameManager.treasureCards.Length;
+        var tdLength = _gameManager.treasureCards.Count;
         for (int i = 0; i < tdLength; i++)
         {
             //Debug.Log(_TreasureCardsObjects.Length + " Length");

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -8,9 +9,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] tiles;
     [SerializeField] private GameObject[] boardPositions;
-    [SerializeField] public GameObject[] treasureCards;
-    [SerializeField] private GameObject[] floodCards;
-    [SerializeField] private GameObject[] treasures;
+    [SerializeField] public List<GameObject> treasureCards;
+    [SerializeField] private List<GameObject> floodCards;
+    [SerializeField] private List<GameObject> treasures;
     [SerializeField] private GameObject[] players;
     [SerializeField] private GameObject[] playerCards;
     [SerializeField] private GameObject tileShuffler;
@@ -30,10 +31,16 @@ public class GameManager : MonoBehaviour
         _sorter.tiles = tiles;
         _sorter.Tile_Sorter();
         var treasureShuffler = treasureDeck.GetComponent<CardShuffler>();
-        treasureShuffler._object = treasureCards;
+        for (int i = 0; i < treasureCards.Count; i++)
+        {
+            treasureShuffler._object[i] = treasureCards[i];
+        }
         treasureShuffler.ShuffleCards();
         var floodShuffler = floodDeck.GetComponent<CardShuffler>();
-        floodShuffler._object = floodCards;
+        for (int i = 0; i < floodCards.Count; i++)
+        {
+            floodShuffler._object[i] = floodCards[i];
+        }
         floodShuffler.ShuffleCards();
         var _playerSorter = playerSorter.GetComponent<PlayerSorter>();
         _playerSorter._object = playerCards;
