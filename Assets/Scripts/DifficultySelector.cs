@@ -4,28 +4,49 @@ using UnityEngine;
 
 public class DifficultySelector : MonoBehaviour
 {
-    [SerializeField] private int difficulty = 0;
+    [SerializeField] public bool Novice, Normal, Elite, Legendary = false;
 
-    // Update is called once per frame
-    void Update()
+    public void NoviceButton()
     {
-        switch (difficulty)
-        {
-            case 1:
-                print("Novice level was chosen");
-                break;
-            case 2:
-                print("Normal level was chosen");
-                break;
-            case 3:
-                print("Elite level was chosen");
-                break;
-            case 4:
-                print("Legendary level was chosen");
-                break;
-            default:
-                print("Please choose a level");
-                break;
-        }
+        Novice = true;
+        Normal = false;
+        Elite = false;
+        Legendary = false;
+        Debug.Log("Novice was chosen");
+    }
+
+    public void NormalButton()
+    {
+        Novice = false;
+        Normal = true;
+        Elite = false;
+        Legendary = false;
+        Debug.Log("Normal was chosen");
+    }
+
+    public void EliteButton()
+    {
+        Novice = false;
+        Normal = false;
+        Elite = true;
+        Legendary = false;
+        Debug.Log("Elite was chosen");
+    }
+
+    public void LegendaryButton()
+    {
+        Novice = false;
+        Normal = false;
+        Elite = false;
+        Legendary = true;
+        Debug.Log("Legendary was chosen");
+    }
+
+    public void DifficultyBackButton()
+    {
+        Novice = false;
+        Normal = false;
+        Elite = false; 
+        Legendary = false;
     }
 }
