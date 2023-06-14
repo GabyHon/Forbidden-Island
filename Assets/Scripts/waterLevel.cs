@@ -7,7 +7,7 @@ public class waterLevel : MonoBehaviour
 {
     // change to 1 marker, place the place holder gae objects into an array and use the current level to reference
     // that array, then move the marker to the position of its allocated placeholder in the array.
-    private int Waterlvl; // i want to check if i can read this value when we change scenes.
+    public int Waterlvl; // i want to check if i can read this value when we change scenes.
     private int MaxWaterLvl = 10;
 // would negate the need for this
     private int NoviceLvl = 1;

@@ -2552,7 +2552,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f23a2e8e302ee24bb91e300f92759dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: []
+  _object:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &579020329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3263,29 +3287,29 @@ MonoBehaviour:
   turnPhase: 0
   gameStart: 1
   _player1:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
   _player2:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
   _player3:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
   _player4:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
+  - {fileID: 38894925}
   _TreasureCardsObjects:
   - {fileID: 614533098}
   - {fileID: 1365307642}
@@ -4513,7 +4537,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f23a2e8e302ee24bb91e300f92759dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: []
+  _object:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &930895075
 GameObject:
   m_ObjectHideFlags: 0
@@ -4834,7 +4886,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f23a2e8e302ee24bb91e300f92759dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: []
+  _object:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &972773346
 GameObject:
   m_ObjectHideFlags: 0

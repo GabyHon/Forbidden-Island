@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayeHand : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class PlayeHand : MonoBehaviour
             _currentPlayer = 1;
             Debug.Log(_currentPlayer + " On Game Start");
             //_gameStart = false;
+            //Debug.Log();
         }
 
         if (_turnManager._player1.Length >= 2)
