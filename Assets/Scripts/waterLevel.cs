@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class waterLevel : MonoBehaviour
 {
-    private int Waterlvl;
+    // change to 1 marker, place the place holder gae objects into an array and use the current level to reference
+    // that array, then move the marker to the position of its allocated placeholder in the array.
+    private int Waterlvl; // i want to check if i can read this value when we change scenes.
     private int MaxWaterLvl = 10;
-
+// would negate the need for this
     private int NoviceLvl = 1;
     private int NormalLvl = 2;
     private int EliteLvl = 3;
@@ -30,7 +32,7 @@ public class waterLevel : MonoBehaviour
     [SerializeField] private GameObject LegendaryMarkerHolder;
 
     public void SettingNoviceMarkerToActive()
-    {
+    {// instead of SetActive we would use 'transform.position'
         NoviceMarker.transform.position = NoviceMarkerHolder.transform.position;
         NoviceMarker.SetActive(true);
         NormalMarker.SetActive(false);
@@ -81,6 +83,8 @@ public class waterLevel : MonoBehaviour
         
         // checking if the water level has reached the skull and crossbones, line 10 of the water level card
         // can be moved to another script for the end conditions
+        
+        // should this not be in update or in a function that is called when the water level increases?
         if (Waterlvl == MaxWaterLvl)
         {
             Debug.Log("Game Over");
@@ -88,7 +92,7 @@ public class waterLevel : MonoBehaviour
     }
 
     public void LevelChecker()
-    {
+    {// im assuming this was to test if they were working?
         if (Waterlvl == NoviceLvl)
         {
             Debug.Log("Starting at novice level");

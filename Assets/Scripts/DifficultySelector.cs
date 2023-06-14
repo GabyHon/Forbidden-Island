@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DifficultySelector : MonoBehaviour
 {
+    // should we change this to an int value?
     [SerializeField] public bool Novice, Normal, Elite, Legendary = false;
-
+// in all of these buttons we want to switch to the game scene.
     public void NoviceButton()
     {
         Novice = true;
