@@ -6,11 +6,11 @@ using UnityEngine.UIElements;
 public class TileSorter : MonoBehaviour
 {
   public GameObject[] positions;
-  public GameObject[] tiles;
+  public List<GameObject> tiles;
 
   public void Tile_Sorter()
   {
-    var length = tiles.Length;
+    var length = tiles.Count;
     for (var i = 0; i < length; i++)
     {
       tiles[i].transform.position = positions[i].transform.position;

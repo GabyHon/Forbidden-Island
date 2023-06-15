@@ -8,12 +8,12 @@ using Random = UnityEngine.Random;
 
 public class CardShuffler : MonoBehaviour
 {
-    public GameObject[] _object;
+    public List<GameObject> _object;
 
     public void ShuffleCards()
     {
-        var length = _object.Length;
-        var halfLength = _object.Length / 2;
+        var length = _object.Count;
+        var halfLength = _object.Count / 2;
         for (var i = 0; i < halfLength; i++)
         {
             var randNumA = Random.Range(0, length);

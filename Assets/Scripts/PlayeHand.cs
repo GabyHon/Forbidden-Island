@@ -16,10 +16,10 @@ public class PlayeHand : MonoBehaviour
     //[SerializeField] private bool _gameStart = false;
     public bool _gameStart = false;
     [SerializeField] private int _currentTurn;
-    [SerializeField] private GameObject[] _player1;
-    [SerializeField] private GameObject[] _player2;
-    [SerializeField] private GameObject[] _player3;
-    [SerializeField] private GameObject[] _player4;
+    [SerializeField] private List<GameObject> _player1;
+    [SerializeField] private List<GameObject> _player2;
+    [SerializeField] private List<GameObject> _player3;
+    [SerializeField] private List<GameObject> _player4;
     [SerializeField] private GameObject offHand;
     [SerializeField] private Vector3[] _handPositions;
     public GameObject turnManager;
@@ -44,7 +44,7 @@ public class PlayeHand : MonoBehaviour
             //Debug.Log();
         }
 
-        if (_turnManager._player1.Length >= 2)
+        if (_turnManager._player1.Count >= 2)
         {
             for (int i = 0; i < 5; i++)
             {
@@ -55,7 +55,7 @@ public class PlayeHand : MonoBehaviour
             }
         }
 
-        
+        // change this to a function called on the change of turn
         switch (_currentPlayer)
         {
             case 1:

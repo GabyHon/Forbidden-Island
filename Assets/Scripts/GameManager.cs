@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 
 {
-    [SerializeField] private GameObject[] tiles;
+    [SerializeField] private List<GameObject> tiles;
     [SerializeField] private GameObject[] boardPositions;
     [SerializeField] public List<GameObject> treasureCards;
     [SerializeField] private List<GameObject> floodCards;
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject floodDeck;
     [SerializeField] private GameObject playerSorter;
     private GameObject[] treasureCardsCopy;
+    public bool treasreShuffle = false;
 
     public void Start()
     {
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
             treasureShuffler._object[i] = treasureCards[i];
         }
         treasureShuffler.ShuffleCards();
+        treasreShuffle = true;
         var floodShuffler = floodDeck.GetComponent<CardShuffler>();
         for (int i = 0; i < floodCards.Count; i++)
         {

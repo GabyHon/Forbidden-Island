@@ -8,14 +8,15 @@ public class TurnManager : MonoBehaviour
 {
     public int turnPhase;
     public bool gameStart;
-    public GameObject[] _player1;
-    public GameObject[] _player2;
-    public GameObject[] _player3;
-    public GameObject[] _player4;
-    public GameObject[] _TreasureCardsObjects;
+    public List<GameObject> _player1;
+    public List<GameObject> _player2;
+    public List<GameObject> _player3;
+    public List<GameObject> _player4;
+    public List<GameObject> _TreasureCardsObjects;
     public int topOfDeck = 0;
     public GameObject gameManager;
     private GameManager _gameManager;
+    [SerializeField] private CardShuffler floodCards;
 
     private void Start()
     {
@@ -32,15 +33,19 @@ public class TurnManager : MonoBehaviour
             //Debug.Log("aiygb");
         }
 
-        if (gameStart == true && _TreasureCardsObjects.Length > 9)
+        if (gameStart == true && _TreasureCardsObjects.Count > 9 && _gameManager.treasreShuffle == true)
         {
             for (int i = 0; i < 2; i++)
             {
-                _player1[i] = _TreasureCardsObjects[topOfDeck];
-                _player2[i] = _TreasureCardsObjects[topOfDeck + 1];
-                _player3[i] = _TreasureCardsObjects[topOfDeck + 2];
-                _player4[i] = _TreasureCardsObjects[topOfDeck + 3];
-                topOfDeck = topOfDeck + 4;
+                _player1[i] = floodCards._object[0];
+                _player2[i] = floodCards._object[1];
+                _player3[i] = floodCards._object[2];
+                _player4[i] = floodCards._object[3];
+                floodCards._object.RemoveAt(0);
+                floodCards._object.RemoveAt(0);
+                floodCards._object.RemoveAt(0);
+                floodCards._object.RemoveAt(0);
+                
             }
 
             gameStart = false;
