@@ -16,7 +16,7 @@ public class TurnManager : MonoBehaviour
     public int topOfDeck = 0;
     public GameObject gameManager;
     private GameManager _gameManager;
-    [SerializeField] private CardShuffler floodCards;
+    [SerializeField] private CardShuffler treasureCards;
 
     private void Start()
     {
@@ -37,14 +37,14 @@ public class TurnManager : MonoBehaviour
         {
             for (int i = 0; i < 2; i++)
             {
-                _player1[i] = floodCards._object[0];
-                _player2[i] = floodCards._object[1];
-                _player3[i] = floodCards._object[2];
-                _player4[i] = floodCards._object[3];
-                floodCards._object.RemoveAt(0);
-                floodCards._object.RemoveAt(0);
-                floodCards._object.RemoveAt(0);
-                floodCards._object.RemoveAt(0);
+                _player1[i] = treasureCards._object[0];
+                _player2[i] = treasureCards._object[1];
+                _player3[i] = treasureCards._object[2];
+                _player4[i] = treasureCards._object[3];
+                treasureCards._object.RemoveAt(0);
+                treasureCards._object.RemoveAt(0);
+                treasureCards._object.RemoveAt(0);
+                treasureCards._object.RemoveAt(0);
                 
             }
 

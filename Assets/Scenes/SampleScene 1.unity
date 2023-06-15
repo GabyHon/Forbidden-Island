@@ -3017,6 +3017,7 @@ MonoBehaviour:
   treasureDeck: {fileID: 887095671}
   floodDeck: {fileID: 959914303}
   playerSorter: {fileID: 2136999521}
+  treasreShuffle: 0
 --- !u!4 &624102303
 Transform:
   m_ObjectHideFlags: 0
@@ -3341,6 +3342,7 @@ MonoBehaviour:
   - {fileID: 1289982915}
   topOfDeck: 0
   gameManager: {fileID: 624102301}
+  treasureCards: {fileID: 887095674}
 --- !u!1 &651612674
 GameObject:
   m_ObjectHideFlags: 0
