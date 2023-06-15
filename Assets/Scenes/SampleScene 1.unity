@@ -2018,6 +2018,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b77846c3c43514a8f10a636a41b839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BoardRestrictionOne: {fileID: 1626327457}
+  BoardRestrictionTwo: {fileID: 651612674}
+  BoardRestrictionThree: {fileID: 1338016398}
+  BoardRestrictionFour: {fileID: 330524503}
+  BoardRestrictionFive: {fileID: 1298076142}
+  BoardRestrictionSix: {fileID: 579020329}
+  DiverPlayerPiece: {fileID: 220470058}
+  PilotPlayerPiece: {fileID: 378399275}
+  ExplorerPlayerPiece: {fileID: 561616810}
+  MessengerPlayerPiece: {fileID: 633887086}
+  EngineerPlayerPiece: {fileID: 1769888129}
+  NavigatorPlayerPiece: {fileID: 194484884}
 --- !u!4 &423063702
 Transform:
   m_ObjectHideFlags: 0
@@ -2026,8 +2038,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423063700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4022274, y: -3.5967233, z: 0.0025462299}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.96, y: -3.95, z: 0.0025462299}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -8373,7 +8385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769888129}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9721341, y: -0.14254169, z: 10.007377}
+  m_LocalPosition: {x: 18.28, y: 5.65, z: 10.007377}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

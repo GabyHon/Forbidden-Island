@@ -4,20 +4,47 @@ using UnityEngine;
 
 public class MovingBetweenTiles : MonoBehaviour
 {
+    [Header("Top Boarders")]
     [SerializeField] GameObject BoardRestrictionOne;
     [SerializeField] GameObject BoardRestrictionTwo;
     [SerializeField] GameObject BoardRestrictionThree;
     [SerializeField] GameObject BoardRestrictionFour;
     [SerializeField] GameObject BoardRestrictionFive;
     [SerializeField] GameObject BoardRestrictionSix;
-    [SerializeField] GameObject PlayerPiece;
+
+    [Header("Player Pieces")]
+    [SerializeField] GameObject DiverPlayerPiece;
+    [SerializeField] GameObject PilotPlayerPiece;
+    [SerializeField] GameObject ExplorerPlayerPiece;
+    [SerializeField] GameObject MessengerPlayerPiece;
+    [SerializeField] GameObject EngineerPlayerPiece;
+    [SerializeField] GameObject NavigatorPlayerPiece;
+
+    /*[Header("Starting player token positions")]
+    [SerializeField] GameObject BronzeGate;
+    [SerializeField] GameObject CopperGate;
+    [SerializeField] GameObject FoolsLanding;
+    [SerializeField] GameObject GoldenGate;
+    [SerializeField] GameObject IronGate;
+    [SerializeField] GameObject SilverGate;*/
+
+
+    /*private void Start()
+    {
+        EngineerPlayerPiece.transform.position = BronzeGate.transform.position;
+        ExplorerPlayerPiece.transform.position = CopperGate.transform.position;
+        PilotPlayerPiece.transform.position = FoolsLanding.transform.position;
+        NavigatorPlayerPiece.transform.position = GoldenGate.transform.position;
+        DiverPlayerPiece.transform.position = IronGate.transform.position;
+        MessengerPlayerPiece.transform.position = SilverGate.transform.position;
+    }*/
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            transform.Translate(0, 2, 0);
-            Debug.Log("Up arrow was pressed");
+            EngineerPlayerPiece.transform.Translate(0, 2, 0);
+            //Debug.Log("Up arrow was pressed");
 
              /*if (PlayerPiece.transform.position == BoardRestrictionOne.transform.position 
                 || PlayerPiece.transform.position == BoardRestrictionTwo.transform.position
@@ -32,18 +59,18 @@ public class MovingBetweenTiles : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            transform.Translate(0, -2, 0);
-            Debug.Log("Down arrow was pressed");
+            EngineerPlayerPiece.transform.Translate(0, -2, 0);
+            //Debug.Log("Down arrow was pressed");
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.Translate(-2, 0, 0);
-            Debug.Log("Left arrow was pressed");
+            EngineerPlayerPiece.transform.Translate(-2, 0, 0);
+            //Debug.Log("Left arrow was pressed");
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.Translate(2, 0, 0);
-            Debug.Log("Right arrow was pressed");
+            EngineerPlayerPiece.transform.Translate(2, 0, 0);
+            //Debug.Log("Right arrow was pressed");
         }
     }
 }
