@@ -13,6 +13,7 @@ public class TileSorter : MonoBehaviour
     var length = tiles.Count;
     for (var i = 0; i < length; i++)
     {
+      tiles[i].transform.parent = positions[i].transform;
       tiles[i].transform.position = positions[i].transform.position;
     }
   }

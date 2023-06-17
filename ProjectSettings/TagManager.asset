@@ -10,6 +10,8 @@ TagManager:
   - Messenger
   - Navigator
   - Pilot
+  - Treasure
+  - Tile
   layers:
   - Default
   - TransparentFX
