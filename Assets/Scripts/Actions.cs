@@ -10,6 +10,7 @@ public class Actions : MonoBehaviour
     private bool shoreUp = false;
     public bool treasure = false;
     private bool capture = false;
+    public int actions;
     
     public void Move()
     {
@@ -35,7 +36,6 @@ public class Actions : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
         //Debug.Log(mousePos);
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePos), Vector3.forward,Mathf.Infinity);
 
         if (move)
         {
@@ -50,6 +50,12 @@ public class Actions : MonoBehaviour
                 //ability. then if it is add 1 to actions, move the player to the
                 //colliders parent and parent the player to the colliders parent
                 // and change move to false, lastly making the buttons active again
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePos), Vector3.forward,Mathf.Infinity);
+
+                if (hit.collider.gameObject.CompareTag("Tile"))
+                {
+                    actions++;
+                }
                 Debug.Log(hit.transform.gameObject.transform.parent);
                 move = false;
             }
