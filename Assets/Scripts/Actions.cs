@@ -10,7 +10,7 @@ public class Actions : MonoBehaviour
     private bool shoreUp = false;
     public bool treasure = false;
     private bool capture = false;
-    public int actions;
+    public int actions = 0;
     
     public void Move()
     {
