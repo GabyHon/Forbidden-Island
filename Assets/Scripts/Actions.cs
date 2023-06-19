@@ -11,6 +11,7 @@ public class Actions : MonoBehaviour
     public bool treasure = false;
     private bool capture = false;
     public int actions = 0;
+    [SerializeField] private PlayeHand ph;
     
     public void Move()
     {
@@ -90,6 +91,12 @@ public class Actions : MonoBehaviour
         if (capture)
         {
             //check
-        } 
+        }
+
+        if (actions == 3)
+        {
+            ph._currentPlayer++;
+            actions = 0;
+        }
     }
 }

@@ -10,7 +10,7 @@ public class PlayeHand : MonoBehaviour
     public GameObject[] handPositions;
     [SerializeField] private int _noPlayers;
     [SerializeField] private bool _isPlayerPlaying;
-    [SerializeField] private int _currentPlayer = 0;
+    public int _currentPlayer = 0;
     [SerializeField] private bool _gameOver = false;
     [SerializeField] private bool _turnOver;
     //[SerializeField] private bool _gameStart = false;
@@ -25,26 +25,32 @@ public class PlayeHand : MonoBehaviour
     public GameObject turnManager;
     [SerializeField] private TurnManager _turnManager;
     [SerializeField] private Transform HandPositions;
+    [SerializeField] private GameSystem gs;
 
     private void Start()
     {
         _turnManager = turnManager.GetComponent<TurnManager>();
+        _noPlayers = gs.no_Players;
         //_gameStart = false;
         //_gameStart = true;
     }
 
     private void Update()
     {
+        if (_currentPlayer > gs.no_Players)
+        {
+            _currentPlayer = 1;
+        }
         //Debug.Log(_currentPlayer);
         if (_gameStart)
         {
             _currentPlayer = 1;
             Debug.Log(_currentPlayer + " On Game Start");
-            //_gameStart = false;
+            _gameStart = false;
             //Debug.Log();
         }
 
-        if (_turnManager._player1.Count >= 2)
+        if (gs.no_Players == 4)
         {
             for (int i = 0; i < 5; i++)
             {
@@ -54,54 +60,153 @@ public class PlayeHand : MonoBehaviour
                 _player4[i] = _turnManager._player4[i];
             }
         }
+        else if (gs.no_Players == 3)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                _player1[i] = _turnManager._player1[i];
+                _player2[i] = _turnManager._player2[i];
+                _player3[i] = _turnManager._player3[i]; 
+            } 
+        }
+        else if (gs.no_Players == 2)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                _player1[i] = _turnManager._player1[i];
+                _player2[i] = _turnManager._player2[i];
+            }
+        }
 
         // change this to a function called on the change of turn
-        switch (_currentPlayer)
+        if (gs.no_Players == 4)
         {
-            case 1:
+            switch (_currentPlayer)
             {
-                for (int i = 0; i < 5; i++)
+                case 1:
                 {
-                   _player4[i].transform.SetParent(null);
-                    _player4[i].transform.position = offHand.transform.position;
-                    _player1[i].transform.SetParent(HandPositions);
-                    _player1[i].transform.position = handPositions[i].transform.position;
-                   // Debug.Log("it works");
-                   // Debug.Log(_player1[0]);
-                }
+                    for (int i = 0; i < 5; i++)
+                    {
+                        _player4[i].transform.SetParent(null);
+                        _player4[i].transform.position = offHand.transform.position;
+                        _player1[i].transform.SetParent(HandPositions);
+                        _player1[i].transform.position = handPositions[i].transform.position;
+                        // Debug.Log("it works");
+                        // Debug.Log(_player1[0]);
+                    }
 
-                break;
+                    break;
+                }
+                case 2:
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        _player1[i].transform.SetParent(null);
+                        _player1[i].transform.position = offHand.transform.position;
+                        _player2[i].transform.SetParent(HandPositions);
+                        _player2[i].transform.position = handPositions[i].transform.position;
+                    }
+
+                    break;
+                }
+                case 3:
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        _player2[i].transform.SetParent(null);
+                        _player2[i].transform.position = offHand.transform.position;
+                        _player3[i].transform.SetParent(HandPositions);
+                        _player3[i].transform.position = handPositions[i].transform.position;
+                    }
+
+                    break;
+                }
+                case 4:
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        _player3[i].transform.SetParent(null);
+                        _player3[i].transform.position = offHand.transform.position;
+                        _player4[i].transform.SetParent(HandPositions);
+                        _player4[i].transform.position = handPositions[i].transform.position;
+                    }
+
+                    break;
+                }
             }
-            case 2:
+        }
+        else if (gs.no_Players == 3)
+        {
+            switch (_currentPlayer)
             {
-                for (int i = 0; i < 5; i++)
+                case 1:
                 {
-                    _player1[i].GameObject().transform.position = offHand.GameObject().transform.position;
-                    _player2[i].gameObject.transform.position = handPositions[i].gameObject.transform.position;
-                }
+                    for (int i = 0; i < 5; i++)
+                    {
+                        _player3[i].transform.SetParent(null);
+                        _player3[i].transform.position = offHand.transform.position;
+                        _player1[i].transform.SetParent(HandPositions);
+                        _player1[i].transform.position = handPositions[i].transform.position;
+                        // Debug.Log("it works");
+                        // Debug.Log(_player1[0]);
+                    }
 
-                break;
+                    break;
+                }
+                case 2:
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        _player1[i].transform.SetParent(null);
+                        _player1[i].transform.position = offHand.transform.position;
+                        _player2[i].transform.SetParent(HandPositions);
+                        _player2[i].transform.position = handPositions[i].transform.position;
+                    }
+
+                    break;
+                }
+                case 3:
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        _player2[i].transform.SetParent(null);
+                        _player2[i].transform.position = offHand.transform.position;
+                        _player3[i].transform.SetParent(HandPositions);
+                        _player3[i].transform.position = handPositions[i].transform.position;
+                    }
+
+                    break;
+                }
             }
-            case 3:
+        }
+        else if (gs.no_Players == 2)
+        {
+            switch (_currentPlayer)
             {
-                for (int i = 0; i < 5; i++)
+                case 1:
                 {
-                    _player2[i].gameObject.transform.position = offHand.gameObject.transform.position;
-                    _player3[i].gameObject.transform.position = handPositions[i].gameObject.transform.position;
-                }
+                    for (int i = 0; i < 5; i++)
+                    {
+                        _player2[i].transform.SetParent(null);
+                        _player2[i].transform.position = offHand.transform.position;
+                        _player1[i].transform.SetParent(HandPositions);
+                        _player1[i].transform.position = handPositions[i].transform.position;
+                    }
 
-                break;
-            }
-            case 4:
-            {
-                for (int i = 0; i < 5; i++)
+                    break;
+                }
+                case 2:
                 {
-                    _player3[i].gameObject.transform.position = offHand.gameObject.transform.position;
-                    _player4[i].gameObject.transform.position = handPositions[i].gameObject.transform.position;
-                
-                }
+                    for (int i = 0; i < 5; i++)
+                    {
+                        _player1[i].transform.SetParent(null);
+                        _player1[i].transform.position = offHand.transform.position;
+                        _player2[i].transform.SetParent(HandPositions);
+                        _player2[i].transform.position = handPositions[i].transform.position;
+                    }
 
-                break;
+                    break;
+                }
             }
         }
     }

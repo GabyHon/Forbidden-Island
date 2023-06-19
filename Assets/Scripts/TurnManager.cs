@@ -17,6 +17,7 @@ public class TurnManager : MonoBehaviour
     public GameObject gameManager;
     private GameManager _gameManager;
     [SerializeField] private CardShuffler treasureCards;
+    [SerializeField] private GameSystem gs;
 
     private void Start()
     {
@@ -35,17 +36,44 @@ public class TurnManager : MonoBehaviour
 
         if (gameStart == true && _TreasureCardsObjects.Count > 9 && _gameManager.treasreShuffle == true)
         {
-            for (int i = 0; i < 2; i++)
+            if (gs.no_Players == 4)
             {
-                _player1[i] = treasureCards._object[0];
-                _player2[i] = treasureCards._object[1];
-                _player3[i] = treasureCards._object[2];
-                _player4[i] = treasureCards._object[3];
-                treasureCards._object.RemoveAt(0);
-                treasureCards._object.RemoveAt(0);
-                treasureCards._object.RemoveAt(0);
-                treasureCards._object.RemoveAt(0);
+                for (int i = 0; i < 2; i++)
+                {
+                    _player1[i] = treasureCards._object[0];
+                    _player2[i] = treasureCards._object[1];
+                    _player3[i] = treasureCards._object[2];
+                    _player4[i] = treasureCards._object[3];
+                    treasureCards._object.RemoveAt(0);
+                    treasureCards._object.RemoveAt(0);
+                    treasureCards._object.RemoveAt(0);
+                    treasureCards._object.RemoveAt(0);
                 
+                }
+            }
+            else if (gs.no_Players == 3)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    _player1[i] = treasureCards._object[0];
+                    _player2[i] = treasureCards._object[1];
+                    _player3[i] = treasureCards._object[2];
+                    treasureCards._object.RemoveAt(0);
+                    treasureCards._object.RemoveAt(0);
+                    treasureCards._object.RemoveAt(0);
+                
+                }
+            }
+            else if (gs.no_Players == 2)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    _player1[i] = treasureCards._object[0];
+                    _player2[i] = treasureCards._object[1];
+                    treasureCards._object.RemoveAt(0);
+                    treasureCards._object.RemoveAt(0);
+                
+                }
             }
 
             gameStart = false;
