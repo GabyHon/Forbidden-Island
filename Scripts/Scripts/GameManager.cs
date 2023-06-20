@@ -7,13 +7,16 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] characters; // Array of character prefabs
+    public List<GameObject> instantiatedCharacters;
     public Button[] actionButtons; // Array of action buttons
     public Text remainingActionsText; // Text component to display remaining actions
     public Text playerIndexText; // Text component to display current player index
     public Text playerNameText; // Text component to display current player name
     public Text playerAbilityText; // Text component to display current player ability
+    public Text NumberOfPlayersText;
 
     private int numberOfPlayers;
+    public int numberOfActivePlayers;
     public List<GameObject> players = new List<GameObject>();
     private List<int> assignedCharacters; // Stores the assigned character indices for each player
     private int currentPlayerIndex;
@@ -37,7 +40,7 @@ public class GameManager : MonoBehaviour
     private int GetNumberOfPlayers()
     {
         // Replace this with your own logic to get the number of players from user input
-        return 4;
+        return numberOfActivePlayers - 1;
     }
 
     private void AssignCharacters()
@@ -45,7 +48,8 @@ public class GameManager : MonoBehaviour
         // Randomly assign characters to players
         assignedCharacters = new List<int>();
 
-        for (int i = 0; i < numberOfPlayers; i++)
+
+        for (int i = 0; i < numberOfActivePlayers; i++)
         {
             int randomIndex = Random.Range(0, characters.Length);
 
@@ -59,12 +63,15 @@ public class GameManager : MonoBehaviour
         }
 
         // Instantiate player objects with assigned characters
-        for (int i = 0; i < numberOfPlayers; i++)
+        for (int i = 0; i < numberOfActivePlayers; i++)
         {
-            GameObject player = Instantiate(characters[assignedCharacters[i]]);
-            player.SetActive(false);
-            players.Add(player);
+
+            // Instantiate the character prefab and add it to the instantiatedCharacters list
+            GameObject characterInstance = Instantiate(characters[assignedCharacters[i]]);
+            instantiatedCharacters.Add(characterInstance);
         }
+
+
     }
 
     private void SetCurrentPlayerTurn(int playerIndex)
@@ -78,26 +85,22 @@ public class GameManager : MonoBehaviour
 
         // Activate the current player
         GameObject currentPlayer = players[playerIndex];
-        GameObject currentCharacter = characters[playerIndex];
+        GameObject currentCharacter = instantiatedCharacters[playerIndex];
         currentPlayer.SetActive(true);
 
-        // Get the character index for the current player
-        int characterIndex = playerIndex % characters.Length;
-
-        // Instantiate the character prefab and set it as the player's character
-        GameObject characterPrefab = characters[characterIndex];
-        GameObject characterInstance = Instantiate(characterPrefab, currentPlayer.transform);
-        characterInstance.transform.localPosition = Vector3.zero;
-        Character currentPlayerCharacter = currentPlayer.GetComponent<Character>();
 
         // Get the Character component of the current player
-        Character character = characterInstance.GetComponent<Character>();
+        Character character = currentCharacter.GetComponent<Character>();
         PlayerID playerID = currentPlayer.GetComponent<PlayerID>();
+
+        // Remove the "(Clone)" suffix from the character's name
+        string characterName = character.name.Replace("(Clone)", "");
 
         // Update UI with current player's information
         playerIndexText.text = playerIndex.ToString();
+        NumberOfPlayersText.text = "Number of players: " + numberOfActivePlayers.ToString();
         playerNameText.text = playerID.PlayerName;
-        playerAbilityText.text = character.name;
+        playerAbilityText.text = characterName;
 
         if (playerIndex == playerID.id)
         {
@@ -109,6 +112,38 @@ public class GameManager : MonoBehaviour
         // Show the action buttons for the current player
         SetActionButtonsActive(true);
 
+        if (playerIndex == playerID.id)
+        {
+            playerID.isCurrentPlayer = true;
+
+            // Check if the current player is an Engineer and activate the corresponding button
+            if (character.specialAbilities.Contains(Character.SpecialAbility.Engineer))
+            {
+                character.shoreUpButton.gameObject.SetActive(true);
+                character.shoreUpButton.interactable = true;
+            }
+            else
+            {
+                character.shoreUpButton.gameObject.SetActive(false);
+            }
+
+            if (character.specialAbilities.Contains(Character.SpecialAbility.Navigator))
+            {
+                character.moveOtherPlayersButton.gameObject.SetActive(true);
+                character.moveOtherPlayersButton.interactable = true;
+            }
+            else
+            {
+                character.moveOtherPlayersButton.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            playerID.isCurrentPlayer = false;
+            character.shoreUpButton.gameObject.SetActive(false);
+            character.moveOtherPlayersButton.gameObject.SetActive(false);
+
+        }
 
     }
 
@@ -188,7 +223,7 @@ public class GameManager : MonoBehaviour
         currentPlayer.SetActive(true);
 
         // Check if all players have played and restart from the first player
-        if (currentPlayerIndex >= players.Count)
+        if (currentPlayerIndex > numberOfPlayers)
         {
             currentPlayerIndex = 0;
         }
