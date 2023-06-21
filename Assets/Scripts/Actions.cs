@@ -62,6 +62,7 @@ public class Actions : MonoBehaviour
                     {
                         case "Diver":
                         {
+                            Debug.Log(hit.collider.tag);
                             if (currentPlayer.transform.parent.name == gm.boardPositions[0].name)
                             {
                                 Debug.Log("pos1");
