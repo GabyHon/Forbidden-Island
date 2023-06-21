@@ -17,10 +17,12 @@ public class PlayerSorter : MonoBehaviour
             var randNumB = Random.Range(0, length);
             var randTileA = _object[randNumA];
             var randTileB = _object[randNumB];
+            var randPlayerA = player[randNumA];
+            var randPlayerB = player[randNumB];
             _object[randNumA] = randTileB;
-            player[randNumA] = randTileB;
+            player[randNumA] = randPlayerB;
             _object[randNumB] = randTileA;
-            player[randNumB] = randTileA;
+            player[randNumB] = randPlayerA;
         }
     }
 }

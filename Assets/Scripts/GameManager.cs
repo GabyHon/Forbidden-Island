@@ -8,11 +8,12 @@ public class GameManager : MonoBehaviour
 
 {
     [SerializeField] private List<GameObject> tiles;
-    [SerializeField] private GameObject[] boardPositions;
-    [SerializeField] public List<GameObject> treasureCards;
+    public GameObject[] boardPositions;
+    public bool[] flooded;
+    public List<GameObject> treasureCards;
     [SerializeField] private List<GameObject> floodCards;
     [SerializeField] private List<GameObject> treasures;
-    [SerializeField] private GameObject[] players;
+    public GameObject[] players;
     [SerializeField] private GameObject[] playerCards;
     [SerializeField] private GameObject tileShuffler;
     [SerializeField] private GameObject tileSorter;

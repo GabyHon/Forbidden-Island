@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayersTurn : MonoBehaviour
-{
-    bool ActionsTaken = false;
+//public class PlayersTurn : MonoBehaviour
+//{
+   /* bool ActionsTaken = false;
     bool TreasureCardsDrawn = false;
     bool FloodCardsDrawn = false;
     bool isPlayerTurn = true;
@@ -16,23 +16,23 @@ public class PlayersTurn : MonoBehaviour
     public DrawTCards drawTCards;
     public DrawFCards drawFCards;*/
 
-    void start()
-    {
-        BeginPlayersTurn();
+   // void start()
+   // {
+      //  BeginPlayersTurn();
 
         /*TreasureCardsDrawn = DrawTCards.treasureCardsDrawn;
         ActionsTaken = CompleteActions.actionsTaken;
         FloodCardsDrawn = DrawFCards.floodCardsDrawn;*/
 
-    }
+   // }
     
        
 
     
 
-    void Update()
-    {
-        if (isPlayerTurn)
+   // void Update()
+   // {
+       /* if (isPlayerTurn)
         {
             if ((ActionsTaken = false) && (TreasureCardsDrawn = false) && (FloodCardsDrawn = false))
             {
@@ -81,4 +81,4 @@ public class PlayersTurn : MonoBehaviour
 
 
 
-}
+}*/
