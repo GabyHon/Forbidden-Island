@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -20,8 +21,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject treasureDeck;
     [SerializeField] private GameObject floodDeck;
     [SerializeField] private GameObject playerSorter;
+    [SerializeField] private GameObject diverPos;
+    [SerializeField] private GameObject navigatorPos;
+    [SerializeField] private GameObject pilotPos;
+    [SerializeField] private GameObject explorerPos;
+    [SerializeField] private GameObject messengerPos;
+    [SerializeField] private GameObject engineerPos;
     private GameObject[] treasureCardsCopy;
     public bool treasreShuffle = false;
+    
 
     public void Start()
     {
@@ -49,6 +57,47 @@ public class GameManager : MonoBehaviour
         _playerSorter._object = playerCards;
         _playerSorter.player = players;
         _playerSorter.SortCards();
+        if (_playerSorter.sorted)
+        {Debug.Log(players.Length);
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i].CompareTag("Diver"))
+                {
+                    players[i].transform.position = diverPos.transform.position;
+                    players[i].transform.parent = diverPos.transform.parent;
+                }
+                if (players[i].CompareTag("Engineer"))
+                {
+                    players[i].transform.position = engineerPos.transform.position;
+                    players[i].transform.parent = engineerPos.transform.parent;
+                }
+                if (players[i].CompareTag("Explorer"))
+                {
+                    players[i].transform.position = explorerPos.transform.position;
+                    players[i].transform.parent = explorerPos.transform.parent;
+                }
+                if (players[i].CompareTag("Pilot"))
+                {
+                    players[i].transform.position = pilotPos.transform.position;
+                    players[i].transform.parent = pilotPos.transform.parent;
+                }
+                if (players[i].CompareTag("Messenger"))
+                {
+                    players[i].transform.position = messengerPos.transform.position;
+                    players[i].transform.parent = messengerPos.transform.parent;
+                }
+                if (players[i].CompareTag("Navigator"))
+                {
+                    players[i].transform.position = navigatorPos.transform.position;
+                    players[i].transform.parent = navigatorPos.transform.parent;
+                }
+                else if (i == players.Length)
+                {
+
+                    _playerSorter.sorted = false;
+                }
+            }
+        }
         
     }
 }

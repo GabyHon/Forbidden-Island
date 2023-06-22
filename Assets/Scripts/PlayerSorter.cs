@@ -6,6 +6,7 @@ public class PlayerSorter : MonoBehaviour
 {
     public GameObject[] _object;
     public GameObject[] player;
+    public bool sorted;
 
         public void SortCards()
     {
@@ -23,6 +24,8 @@ public class PlayerSorter : MonoBehaviour
             player[randNumA] = randPlayerB;
             _object[randNumB] = randTileA;
             player[randNumB] = randPlayerA;
+            new WaitForSeconds(2f);
+            sorted = true;
         }
     }
 }
