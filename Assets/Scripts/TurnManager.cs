@@ -78,18 +78,5 @@ public class TurnManager : MonoBehaviour
 
             gameStart = false;
         }
-
-        if (turnPhase == 1)
-        {
-        }
-        else if (turnPhase == 2)
-        {
-        }
-        else if (turnPhase == 3)
-        {
-        }
-        else
-        {
-        }
     }
 }
