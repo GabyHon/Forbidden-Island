@@ -2040,6 +2040,12 @@ GameObject:
   m_Component:
   - component: {fileID: 245481051}
   - component: {fileID: 245481052}
+  - component: {fileID: 245481057}
+  - component: {fileID: 245481058}
+  - component: {fileID: 245481054}
+  - component: {fileID: 245481053}
+  - component: {fileID: 245481055}
+  - component: {fileID: 245481056}
   m_Layer: 0
   m_Name: Turns
   m_TagString: Untagged
@@ -2078,6 +2084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treasure: 0
   actions: 0
+  _actions: 0
   ph: {fileID: 647923861}
   gm: {fileID: 624102302}
   pilotAction: {fileID: 1253414965}
@@ -2090,11 +2097,125 @@ MonoBehaviour:
   treasureDeck: {fileID: 887095674}
   floodDeck: {fileID: 959914306}
   tiles: {fileID: 578063577}
-  pilotMove: {fileID: 0}
-  diverMove: {fileID: 0}
-  messengerMove: {fileID: 0}
-  engineerMove: {fileID: 0}
-  navigatorMove: {fileID: 0}
+  pilotMove: {fileID: 245481057}
+  diverMove: {fileID: 245481056}
+  messengerMove: {fileID: 245481055}
+  engineerMove: {fileID: 245481054}
+  navigatorMove: {fileID: 245481053}
+--- !u!114 &245481053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245481050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3f602ccf124b2cabab35c404e1c78a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  ph: {fileID: 0}
+  o: {fileID: 0}
+  actions: 0
+  currentPlayer: {fileID: 0}
+  navigatorAbility: 0
+  _actions: {fileID: 245481052}
+--- !u!114 &245481054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245481050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94a9fe32ce2440d88d2313d62f40f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  ph: {fileID: 0}
+  o: {fileID: 0}
+  actions: 0
+  currentPlayer: {fileID: 0}
+  _actions: {fileID: 245481052}
+--- !u!114 &245481055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245481050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b29930918ae4208b31441b033fadb5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  ph: {fileID: 0}
+  o: {fileID: 0}
+  actions: 0
+  currentPlayer: {fileID: 0}
+  _actions: {fileID: 245481052}
+--- !u!114 &245481056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245481050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28485f9dd5f4affad849723c0a4ceb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  ph: {fileID: 0}
+  o: {fileID: 0}
+  actions: 0
+  currentPlayer: {fileID: 0}
+  _actions: {fileID: 245481052}
+--- !u!114 &245481057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245481050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c7817fe3d94d769091ecf6e1474893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilotAction: {fileID: 0}
+  moveButton: {fileID: 0}
+  shoreUpButton: {fileID: 0}
+  treasureButton: {fileID: 0}
+  captureButton: {fileID: 0}
+  pilotAbility: 0
+  gm: {fileID: 0}
+  ph: {fileID: 0}
+  o: {fileID: 0}
+  _actions: {fileID: 245481052}
+  currentPlayer: {fileID: 0}
+--- !u!114 &245481058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245481050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c86164ae47a48b59d82287fbc8f323c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  ph: {fileID: 0}
+  o: {fileID: 0}
+  actions: 0
+  currentPlayer: {fileID: 0}
+  _actions: {fileID: 245481052}
 --- !u!1 &269715560
 GameObject:
   m_ObjectHideFlags: 0
@@ -6880,7 +7001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &971233183
 Transform:
   m_ObjectHideFlags: 0
@@ -7602,7 +7723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1058509325
 Transform:
   m_ObjectHideFlags: 0

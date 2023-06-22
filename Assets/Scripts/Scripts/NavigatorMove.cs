@@ -7,9 +7,10 @@ namespace Scripts
         public GameManager gm;
         public PlayeHand ph;
         public GameObject o;
-        public int actions;
+        public bool actions;
         public GameObject currentPlayer;
         public bool navigatorAbility;
+        public Actions _actions;
         
         public void MoveNavigator()
         {
@@ -23,13 +24,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[3].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[1].name)
@@ -38,13 +39,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[4].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[2].name)
@@ -53,13 +54,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[7].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[3].name)
@@ -68,25 +69,25 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[4].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[8].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[2].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[4].name)
@@ -95,25 +96,25 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[5].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[9].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[3].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[5].name)
@@ -122,13 +123,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[4].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[6].name)
@@ -137,13 +138,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[12].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[7].name)
@@ -152,25 +153,25 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[8].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[13].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[6].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[8].name)
@@ -179,25 +180,25 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[9].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[14].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[7].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[9].name)
@@ -206,25 +207,25 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[10].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[15].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[8].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[10].name)
@@ -233,25 +234,25 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[11].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[16].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[9].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[11].name)
@@ -260,13 +261,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[10].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[12].name)
@@ -275,13 +276,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[13].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[13].name)
@@ -290,25 +291,25 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[14].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[18].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[12].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[14].name)
@@ -317,25 +318,25 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[15].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[19].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[13].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[15].name)
@@ -344,19 +345,19 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[16].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[20].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[16].name)
@@ -365,25 +366,25 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[17].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[21].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[15].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[17].name)
@@ -392,13 +393,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[16].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[18].name)
@@ -407,13 +408,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[19].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[19].name)
@@ -422,25 +423,25 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[20].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[22].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[18].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[20].name)
@@ -449,25 +450,25 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[21].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[23].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[19].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[21].name)
@@ -476,13 +477,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[20].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[22].name)
@@ -491,13 +492,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[23].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
             else if (currentPlayer.transform.parent.name == gm.boardPositions[23].name)
@@ -506,13 +507,13 @@ namespace Scripts
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
                 else if (o.transform.parent.name == gm.boardPositions[22].name)
                 {
                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                    actions++;
+                    actions = true;
                 }
             }
 

@@ -12,6 +12,7 @@ public class Actions : MonoBehaviour
     private bool pilotAbility = false;
     private bool navigatorAbility;
     public int actions = 0;
+    public bool _actions;
     [SerializeField] private PlayeHand ph;
     [SerializeField] private GameManager gm;
     [SerializeField] private Button pilotAction;
@@ -84,9 +85,13 @@ public class Actions : MonoBehaviour
                             diverMove.gm = gm;
                             diverMove.ph = ph;
                             diverMove.o = o;
-                            diverMove.actions = actions;
                             diverMove.currentPlayer = currentPlayer;
                             diverMove.MoveDiver();
+                            if (_actions)
+                            {
+                                actions++;
+                                _actions = false;
+                            }
                             break;
                         }
                         case "Pilot":
@@ -100,9 +105,13 @@ public class Actions : MonoBehaviour
                                 pilotMove.gm = gm;
                                 pilotMove.ph = ph;
                                 pilotMove.o = o;
-                                pilotMove.actions = actions;
                                 pilotMove.currentPlayer = currentPlayer;
                                 pilotMove.MovePilot();
+                                if (_actions)
+                                {
+                                    actions++;
+                                    _actions = false;
+                                }
                             break;
                         }
                         case "Explorer":// still to do
@@ -110,9 +119,13 @@ public class Actions : MonoBehaviour
                             diverMove.gm = gm;
                             diverMove.ph = ph;
                             diverMove.o = o;
-                            diverMove.actions = actions;
                             diverMove.currentPlayer = currentPlayer;
                             diverMove.MoveDiver();
+                            if (_actions)
+                            {
+                                actions++;
+                                _actions = false;
+                            }
                             break;
                         }
                         case "Messenger":
@@ -120,9 +133,13 @@ public class Actions : MonoBehaviour
                             messengerMove.gm = gm;
                             messengerMove.ph = ph;
                             messengerMove.o = o;
-                            messengerMove.actions = actions;
                             messengerMove.currentPlayer = currentPlayer;
                             messengerMove.MoveMessenger();
+                            if (_actions)
+                            {
+                                actions++;
+                                _actions = false;
+                            }
                             break;
                         }
                         case "Engineer":
@@ -130,9 +147,13 @@ public class Actions : MonoBehaviour
                             engineerMove.gm = gm;
                             engineerMove.ph = ph;
                             engineerMove.o = o;
-                            engineerMove.actions = actions;
                             engineerMove.currentPlayer = currentPlayer;
                             engineerMove.MoveEngineer();
+                            if (_actions)
+                            {
+                                actions++;
+                                _actions = false;
+                            }
                             break;
                         }
                         case "Navigator":// still to do
@@ -140,10 +161,14 @@ public class Actions : MonoBehaviour
                             navigatorMove.gm = gm;
                             navigatorMove.ph = ph;
                             navigatorMove.o = o;
-                            navigatorMove.actions = actions;
                             navigatorMove.currentPlayer = currentPlayer;
                             navigatorMove.navigatorAbility = navigatorAbility;
                             navigatorMove.MoveNavigator();
+                            if (_actions)
+                            {
+                                actions++;
+                                _actions = false;
+                            }
                             break;
                         }
                     }
