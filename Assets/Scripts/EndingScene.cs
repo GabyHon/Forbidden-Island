@@ -10,6 +10,16 @@ public class EndingScene : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void WinSceneLoad()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void LoseSceneLoad()
+    {
+        SceneManager.LoadScene(2);
+    }
+
 
     public void QuitGame()
     {
