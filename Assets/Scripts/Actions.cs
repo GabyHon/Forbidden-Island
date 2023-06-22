@@ -1269,6 +1269,104 @@ public class Actions : MonoBehaviour
                                     actions++; 
                                 }
                             }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[22].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[19].name)
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[14].name
+                                         && (gm.flooded[19] || gm.boardPositions[19].active == false))
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[8].name
+                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
+                                         && (gm.flooded[19] || gm.boardPositions[19].active == false))
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[3].name
+                                         && (gm.flooded[19] || gm.boardPositions[19].active == false)
+                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
+                                         && (gm.flooded[8] || gm.boardPositions[8].active == false))
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[0].name
+                                         && (gm.flooded[19] || gm.boardPositions[19].active == false)
+                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
+                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
+                                         && (gm.flooded[3] || gm.boardPositions[3].active == false))
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[23].name)
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[23].name)
+                            {
+                                 if (o.transform.parent.name == gm.boardPositions[20].name) 
+                                 {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                 }
+                                 else if (o.transform.parent.name == gm.boardPositions[15].name
+                                         && (gm.flooded[20] || gm.boardPositions[20].active == false))
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[9].name
+                                         && (gm.flooded[15] || gm.boardPositions[15].active == false)
+                                         && (gm.flooded[20] || gm.boardPositions[20].active == false))
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[4].name
+                                         && (gm.flooded[20] || gm.boardPositions[20].active == false)
+                                         && (gm.flooded[15] || gm.boardPositions[15].active == false)
+                                         && (gm.flooded[9] || gm.boardPositions[9].active == false))
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[1].name
+                                         && (gm.flooded[20] || gm.boardPositions[20].active == false)
+                                         && (gm.flooded[15] || gm.boardPositions[15].active == false)
+                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
+                                         && (gm.flooded[4] || gm.boardPositions[4].active == false))
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[22].name)
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
                             Debug.Log("Diver");
                             break;
                         }
