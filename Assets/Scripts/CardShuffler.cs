@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 public class CardShuffler : MonoBehaviour
 {
     public List<GameObject> _object;
+    public List<GameObject> discard;
 
     public void ShuffleCards()
     {

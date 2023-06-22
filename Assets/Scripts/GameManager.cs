@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> treasures;
     public GameObject[] players;
     [SerializeField] private GameObject[] playerCards;
+    [SerializeField] private GameObject[] levelPos;
     [SerializeField] private GameObject tileShuffler;
+    [SerializeField] private GameObject levelMarker;
     [SerializeField] private GameObject tileSorter;
     [SerializeField] private GameObject treasureDeck;
     [SerializeField] private GameObject floodDeck;
@@ -27,8 +29,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject explorerPos;
     [SerializeField] private GameObject messengerPos;
     [SerializeField] private GameObject engineerPos;
+    [SerializeField] private GameSystem gs;
     private GameObject[] treasureCardsCopy;
     public bool treasreShuffle = false;
+    public int difficulty;
     
 
     public void Start()
@@ -98,6 +102,12 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
+
+        difficulty = gs.startingDifficulty;
+    }
+
+    private void Update()
+    {
+        levelMarker.transform.position = levelPos[difficulty].transform.position;
     }
 }
