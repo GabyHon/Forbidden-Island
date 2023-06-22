@@ -2092,6 +2092,9 @@ MonoBehaviour:
   tiles: {fileID: 578063577}
   pilotMove: {fileID: 0}
   diverMove: {fileID: 0}
+  messengerMove: {fileID: 0}
+  engineerMove: {fileID: 0}
+  navigatorMove: {fileID: 0}
 --- !u!1 &269715560
 GameObject:
   m_ObjectHideFlags: 0
@@ -6877,7 +6880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &971233183
 Transform:
   m_ObjectHideFlags: 0
@@ -7599,7 +7602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1058509325
 Transform:
   m_ObjectHideFlags: 0
