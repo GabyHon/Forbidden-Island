@@ -1,4 +1,5 @@
 
+using Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,8 @@ public class Actions : MonoBehaviour
     private bool shoreUp = false;
     public bool treasure = false;
     private bool capture = false;
-    private bool pilotAbility;
+    private bool pilotAbility = false;
+    private bool navigatorAbility;
     public int actions = 0;
     [SerializeField] private PlayeHand ph;
     [SerializeField] private GameManager gm;
@@ -22,6 +24,8 @@ public class Actions : MonoBehaviour
     [SerializeField] private CardShuffler treasureDeck;
     [SerializeField] private CardShuffler floodDeck;
     [SerializeField] private CardShuffler tiles;
+    [SerializeField] private PilotMove pilotMove;
+    [SerializeField] private DiverMove diverMove;
     public void PilotAbility()
     {
         pilotAbility = true;
@@ -74,1338 +78,50 @@ public class Actions : MonoBehaviour
                     {
                         case "Diver":
                         {
-                            Debug.Log(hit.collider.tag);
-                            if (currentPlayer.transform.parent.name == gm.boardPositions[0].name)
-                            {
-                                Debug.Log("pos1");
-                                if (o.transform.parent.name == gm.boardPositions[1].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[3].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[8].name 
-                                         && (gm.flooded[3] || gm.boardPositions[3].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[14].name
-                                         && (gm.flooded[3] || gm.boardPositions[3].active == false) && (gm.flooded[8] 
-                                             || gm.boardPositions[8].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[19].name
-                                         && (gm.flooded[3] || gm.boardPositions[3].active == false) && (gm.flooded[8] 
-                                             || gm.boardPositions[8].active == false) && (gm.flooded[14] 
-                                             || gm.boardPositions[14].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;  
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[22].name
-                                         && (gm.flooded[3] || gm.boardPositions[3].active == false) && (gm.flooded[8] 
-                                             || gm.boardPositions[8].active == false) && (gm.flooded[14] 
-                                             || gm.boardPositions[14].active == false)&& (gm.flooded[19] 
-                                             || gm.boardPositions[19].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;  
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[1].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[0].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[4].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[9].name
-                                         && (gm.flooded[4] || gm.boardPositions[4].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[15].name
-                                         && (gm.flooded[4] || gm.boardPositions[4].active == false) && (gm.flooded[9] 
-                                             || gm.boardPositions[9].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[20].name
-                                         && (gm.flooded[4] || gm.boardPositions[4].active == false) && (gm.flooded[9]
-                                             || gm.boardPositions[9].active == false) && (gm.flooded[15] 
-                                             || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;  
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[23].name
-                                         && (gm.flooded[4] || gm.boardPositions[4].active == false) && (gm.flooded[9] 
-                                             || gm.boardPositions[9].active == false) && (gm.flooded[15] 
-                                             || gm.boardPositions[15].active == false)&& (gm.flooded[20] 
-                                             || gm.boardPositions[20].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;  
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[2].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[3].name && gm.flooded[3])
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[4].name
-                                         && (gm.flooded[3] || gm.boardPositions[3].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[5].name
-                                         && (gm.flooded[3] || gm.boardPositions[3].active == false)
-                                         && (gm.flooded[4] || gm.boardPositions[4].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[7].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[13].name
-                                         && (gm.flooded[7] || gm.boardPositions[7].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[18].name
-                                         && (gm.flooded[7] || gm.boardPositions[7].active == false)
-                                         && (gm.flooded[13] || gm.boardPositions[13].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[3].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[0].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[4].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[5].name
-                                         && (gm.flooded[4] || gm.boardPositions[4].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[8].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[14].name
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[19].name
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[22].name
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[19] || gm.boardPositions[19].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[2].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[4].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[1].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++;
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[5].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[9].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[15].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[20].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[23].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false)
-                                         && (gm.flooded[20] || gm.boardPositions[20].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[5].name)
-                            {
-                                 if (o.transform.parent.name == gm.boardPositions[10].name)
-                                 {
-                                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                     actions++; 
-                                 }
-                                 else if (o.transform.parent.name == gm.boardPositions[16].name
-                                          && (gm.flooded[10] || gm.boardPositions[10].active == false))
-                                 {
-                                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                     actions++; 
-                                 }
-                                 else if (o.transform.parent.name == gm.boardPositions[21].name
-                                          && (gm.flooded[10] || gm.boardPositions[10].active == false)
-                                          && (gm.flooded[16] || gm.boardPositions[16].active == false))
-                                 {
-                                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                     actions++; 
-                                 }
-                                 else if (o.transform.parent.name == gm.boardPositions[4].name)
-                                 {
-                                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                     actions++; 
-                                 }
-                                 else if (o.transform.parent.name == gm.boardPositions[3].name
-                                          && (gm.flooded[4] || gm.boardPositions[4].active == false))
-                                 {
-                                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                     actions++; 
-                                 }
-                                 else if (o.transform.parent.name == gm.boardPositions[2].name
-                                          && (gm.flooded[4] || gm.boardPositions[4].active == false)
-                                          && (gm.flooded[3] || gm.boardPositions[3].active == false))
-                                 {
-                                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                     actions++; 
-                                 }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[6].name)
-                            { 
-                                if (o.transform.parent.name == gm.boardPositions[7].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[8].name
-                                         && (gm.flooded[7] || gm.boardPositions[7].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[9].name
-                                         && (gm.flooded[7] || gm.boardPositions[7].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[10].name
-                                         && (gm.flooded[7] || gm.boardPositions[7].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[11].name
-                                         && (gm.flooded[7] || gm.boardPositions[7].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[10] || gm.boardPositions[10].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[12].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[7].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[2].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[8].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[9].name
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[10].name
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                } 
-                                else if (o.transform.parent.name == gm.boardPositions[11].name
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[10] || gm.boardPositions[10].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                } 
-                                else if (o.transform.parent.name == gm.boardPositions[13].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                } 
-                                else if (o.transform.parent.name == gm.boardPositions[18].name
-                                         && (gm.flooded[13] || gm.boardPositions[13].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                } 
-                                else if (o.transform.parent.name == gm.boardPositions[6].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[8].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[3].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[0].name
-                                         && (gm.flooded[3] || gm.boardPositions[3].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[9].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[10].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[11].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[10] || gm.boardPositions[10].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[14].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[19].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[22].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[19] || gm.boardPositions[19].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[7].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[6].name
-                                         && (gm.flooded[7] || gm.boardPositions[7].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[9].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[4].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                } 
-                                else if (o.transform.parent.name == gm.boardPositions[1].name
-                                         && (gm.flooded[4] || gm.boardPositions[4].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[10].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[11].name
-                                         && (gm.flooded[10] || gm.boardPositions[10].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[15].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[20].name
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[23].name
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false)
-                                         && (gm.flooded[20] || gm.boardPositions[20].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[8].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[7].name
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[6].name
-                                         && (gm.flooded[7] || gm.boardPositions[7].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[10].name)
-                            { 
-                                if (o.transform.parent.name == gm.boardPositions[5].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[11].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[16].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[21].name
-                                         && (gm.flooded[16] || gm.boardPositions[16].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[9].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[8].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[7].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[6].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[7] || gm.boardPositions[7].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[11].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[17].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[10].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[9].name
-                                         && (gm.flooded[10] || gm.boardPositions[10].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[8].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[10] || gm.boardPositions[10].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[7].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[10] || gm.boardPositions[10].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[6].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[7] || gm.boardPositions[7].active == false)
-                                         && (gm.flooded[10] || gm.boardPositions[10].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[12].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[6].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[13].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[14].name
-                                         && (gm.flooded[13] || gm.boardPositions[13].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[15].name
-                                         && (gm.flooded[13] || gm.boardPositions[13].active == false)
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[16].name
-                                         && (gm.flooded[13] || gm.boardPositions[13].active == false)
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[17].name
-                                         && (gm.flooded[13] || gm.boardPositions[13].active == false)
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false)
-                                         && (gm.flooded[16] || gm.boardPositions[16].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[13].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[14].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[15].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[16].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[17].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false)
-                                         && (gm.flooded[16] || gm.boardPositions[16].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[7].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[2].name
-                                         && (gm.flooded[7] || gm.boardPositions[7].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[18].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[12].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[14].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[8].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                } 
-                                else if (o.transform.parent.name == gm.boardPositions[3].name
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[0].name
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[3] || gm.boardPositions[3].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[15].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[16].name
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[17].name
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false)
-                                         && (gm.flooded[16] || gm.boardPositions[16].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[19].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[22].name
-                                         && (gm.flooded[19] || gm.boardPositions[19].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[13].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[12].name
-                                         && (gm.flooded[13] || gm.boardPositions[13].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[15].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[9].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[4].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[1].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[4] || gm.boardPositions[4].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[16].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[17].name
-                                         && (gm.flooded[16] || gm.boardPositions[16].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[20].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[23].name
-                                         && (gm.flooded[20] || gm.boardPositions[20].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[14].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[13].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[12].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[13] || gm.boardPositions[13].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[16].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[10].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[5].name
-                                         && (gm.flooded[10] || gm.boardPositions[10].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[17].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[21].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[15].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[14].name
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[13].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[12].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[13] || gm.boardPositions[13].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[17].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[11].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[16].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[15].name
-                                    && (gm.flooded[16] || gm.boardPositions[16].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[14].name
-                                         && (gm.flooded[16] || gm.boardPositions[16].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[13].name
-                                         && (gm.flooded[16] || gm.boardPositions[16].active == false)
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[12].name
-                                         && (gm.flooded[16] || gm.boardPositions[16].active == false)
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[13] || gm.boardPositions[13].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[18].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[13].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[7].name
-                                         && (gm.flooded[13] || gm.boardPositions[13].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }else if (o.transform.parent.name == gm.boardPositions[2].name
-                                          && (gm.flooded[7] || gm.boardPositions[7].active == false)
-                                          && (gm.flooded[13] || gm.boardPositions[13].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[19].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[20].name
-                                         && (gm.flooded[19] || gm.boardPositions[19].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[21].name
-                                         && (gm.flooded[19] || gm.boardPositions[19].active == false)
-                                         && (gm.flooded[20] || gm.boardPositions[20].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[19].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[14].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[8].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[3].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[0].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[3] || gm.boardPositions[3].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[20].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[21].name
-                                         && (gm.flooded[20] || gm.boardPositions[20].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[22].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[18].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[20].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[15].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[9].name
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[4].name
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[1].name
-                                         && (gm.flooded[4] || gm.boardPositions[4].active == false)
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[21].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[23].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[19].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[18].name
-                                         && (gm.flooded[19] || gm.boardPositions[19].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[21].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[16].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[10].name
-                                         && (gm.flooded[16] || gm.boardPositions[16].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[5].name
-                                         && (gm.flooded[16] || gm.boardPositions[16].active == false)
-                                         && (gm.flooded[10] || gm.boardPositions[10].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[20].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[19].name
-                                         && (gm.flooded[20] || gm.boardPositions[20].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[18].name
-                                         && (gm.flooded[20] || gm.boardPositions[20].active == false)
-                                         && (gm.flooded[19] || gm.boardPositions[19].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[22].name)
-                            {
-                                if (o.transform.parent.name == gm.boardPositions[19].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[14].name
-                                         && (gm.flooded[19] || gm.boardPositions[19].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[8].name
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[19] || gm.boardPositions[19].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[3].name
-                                         && (gm.flooded[19] || gm.boardPositions[19].active == false)
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[0].name
-                                         && (gm.flooded[19] || gm.boardPositions[19].active == false)
-                                         && (gm.flooded[14] || gm.boardPositions[14].active == false)
-                                         && (gm.flooded[8] || gm.boardPositions[8].active == false)
-                                         && (gm.flooded[3] || gm.boardPositions[3].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[23].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[23].name)
-                            {
-                                 if (o.transform.parent.name == gm.boardPositions[20].name) 
-                                 {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                 }
-                                 else if (o.transform.parent.name == gm.boardPositions[15].name
-                                         && (gm.flooded[20] || gm.boardPositions[20].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[9].name
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false)
-                                         && (gm.flooded[20] || gm.boardPositions[20].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[4].name
-                                         && (gm.flooded[20] || gm.boardPositions[20].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false)
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[1].name
-                                         && (gm.flooded[20] || gm.boardPositions[20].active == false)
-                                         && (gm.flooded[15] || gm.boardPositions[15].active == false)
-                                         && (gm.flooded[9] || gm.boardPositions[9].active == false)
-                                         && (gm.flooded[4] || gm.boardPositions[4].active == false))
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                                else if (o.transform.parent.name == gm.boardPositions[22].name)
-                                {
-                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
-                                }
-                            }
-                            Debug.Log("Diver");
+                            diverMove.gm = gm;
+                            diverMove.ph = ph;
+                            diverMove.o = o;
+                            diverMove.actions = actions;
+                            diverMove.currentPlayer = currentPlayer;
+                            diverMove.MoveDiver();
                             break;
                         }
                         case "Pilot":
                         {
-                            pilotAction.gameObject.SetActive(true);
-                            moveButton.gameObject.SetActive(false);
-                            shoreUpButton.gameObject.SetActive(false);
-                            treasureButton.gameObject.SetActive(false);
-                            captureButton.gameObject.SetActive(false);
-                            if (pilotAbility)
-                            {
-                                gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                actions++;
-                                pilotAction.gameObject.SetActive(false);
-                                moveButton.gameObject.SetActive(true);
-                                shoreUpButton.gameObject.SetActive(true);
-                                treasureButton.gameObject.SetActive(true);
-                                captureButton.gameObject.SetActive(true);
-                                pilotAbility = false;
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[0].name)
-                            {
+                            pilotMove.pilotAction = pilotAction;
+                            pilotMove.moveButton = moveButton;
+                            pilotMove.shoreUpButton = shoreUpButton;
+                                pilotMove.treasureButton = treasureButton;
+                                pilotMove.captureButton = captureButton;
+                                pilotMove.pilotAbility = pilotAbility;
+                                pilotMove.gm = gm;
+                                pilotMove.ph = ph;
+                                pilotMove.o = o;
+                                pilotMove.actions = actions;
+                                pilotMove.currentPlayer = currentPlayer;
+                                pilotMove.MovePilot();
+                            break;
+                        }
+                        case "Explorer":// still to do
+                        {
+                            diverMove.gm = gm;
+                            diverMove.ph = ph;
+                            diverMove.o = o;
+                            diverMove.actions = actions;
+                            diverMove.currentPlayer = currentPlayer;
+                            diverMove.MoveDiver();
+                            break;
+                        }
+                        case "Messenger":
+                        {
+                         
+                            
+                            break;
+                        }
+                        case "Engineer":
+                        {
+                             if (currentPlayer.transform.parent.name == gm.boardPositions[0].name) 
+                                {
                                 if (o.transform.parent.name == gm.boardPositions[1].name) 
                                 {
                                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
@@ -1467,7 +183,7 @@ public class Actions : MonoBehaviour
                                 {
                                     gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
                                     gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                    actions++; 
+                                    actions++;
                                 }
                                 else if (o.transform.parent.name == gm.boardPositions[2].name) 
                                 {
@@ -1692,38 +408,725 @@ public class Actions : MonoBehaviour
                                     actions++; 
                                 }
                                 else if (o.transform.parent.name == gm.boardPositions[12].name) 
-                                                                { 
-                                                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-                                                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
-                                                                    actions++; 
-                                                                }
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
                             }
-                            Debug.Log("pilot");
-                           
-                            break;
-                        }
-                        case "Explorer":
-                        {
-                            Debug.Log("explorer");
-                            actions++;
-                            break;
-                        }
-                        case "Messenger":
-                        {
-                            Debug.Log("messenger");
-                            actions++;
-                            break;
-                        }
-                        case "Engineer":
-                        {
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[14].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[8].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[15].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[19].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[13].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[15].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[9].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[16].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[20].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[16].name)
+                            { 
+                                if (o.transform.parent.name == gm.boardPositions[10].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[17].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[21].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[15].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[17].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[11].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[16].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[18].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[13].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }   
+                                else if (o.transform.parent.name == gm.boardPositions[19].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[19].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[14].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[20].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[22].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[18].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[20].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[15].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[21].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[23].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[19].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[21].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[16].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[20].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[22].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[19].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[23].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[23].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[20].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[22].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++;
+                                }
+                            }
                             Debug.Log("engineer");
-                            actions++;
                             break;
                         }
-                        case "Navigator":
+                        case "Navigator":// still to do
                         {
+                            if (navigatorAbility)
+                            {
+                                
+                            }
+                            else  if (currentPlayer.transform.parent.name == gm.boardPositions[0].name) 
+                                {
+                                if (o.transform.parent.name == gm.boardPositions[1].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[3].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[1].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[0].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[4].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[2].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[3].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                } 
+                                else if (o.transform.parent.name == gm.boardPositions[7].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[3].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[0].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[4].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[8].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++;
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[2].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[4].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[1].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[5].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[9].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[3].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position; 
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[5].name)
+                            { 
+                                if (o.transform.parent.name == gm.boardPositions[10].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[4].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[6].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[7].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[12].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[7].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[2].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[8].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[13].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[6].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[8].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[3].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[9].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[14].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[7].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[9].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[4].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[10].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[15].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[8].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[10].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[5].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[11].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[16].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[9].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[11].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[17].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[10].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[12].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[6].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[13].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[13].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[7].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[14].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[18].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[12].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[14].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[8].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[15].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[19].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[13].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[15].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[9].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[16].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[20].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[16].name)
+                            { 
+                                if (o.transform.parent.name == gm.boardPositions[10].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[17].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[21].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[15].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[17].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[11].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[16].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[18].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[13].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }   
+                                else if (o.transform.parent.name == gm.boardPositions[19].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[19].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[14].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[20].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[22].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[18].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[20].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[15].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[21].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[23].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[19].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[21].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[16].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[20].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[22].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[19].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[23].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                            }
+                            else if (currentPlayer.transform.parent.name == gm.boardPositions[23].name)
+                            {
+                                if (o.transform.parent.name == gm.boardPositions[20].name) 
+                                { 
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++; 
+                                }
+                                else if (o.transform.parent.name == gm.boardPositions[22].name) 
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    actions++;
+                                }
+                            }
+
                             Debug.Log("navigator");
-                            actions++;
                             break;
                         }
                     }
