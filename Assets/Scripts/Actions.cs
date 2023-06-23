@@ -30,6 +30,7 @@ public class Actions : MonoBehaviour
     [SerializeField] private MessengerMove messengerMove;
     [SerializeField] private EngineerMove engineerMove;
     [SerializeField] private NavigatorMove navigatorMove;
+    [SerializeField] private GameSystem gs;
     public void PilotAbility()
     {
         pilotAbility = true;
@@ -183,12 +184,7 @@ public class Actions : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("shore up");
-                //raycast, get collider and if the collider's tag is 'tile' then 
-                //get the current player's piece and the piece's parent, then check
-                //if the colliders parent is one of the tiles the player is next to
-                //, taking into account the player's
-                //ability. then if it is add 1 to actions, shore up the tile
-                // and change shoreUp to false, lastly making the buttons active again
+               
             }
         } 
         if (treasure)
@@ -218,6 +214,7 @@ public class Actions : MonoBehaviour
             var floodCard4 = floodDeck._object[3];
             var floodCard5 = floodDeck._object[4];
 
+            DrawTreasure();
             if (gm.difficulty < 2)
             {
                 floodCard1.transform.position = floodPlacement.transform.position; 
@@ -276,6 +273,50 @@ public class Actions : MonoBehaviour
             
             ph._currentPlayer++;
             actions = 0;
+        }
+    }
+
+    void DrawTreasure()
+    {
+        for (int i = 0; i < ph._player1.Count; i++)
+        {
+            if (ph._player1[i].name == "NullGameObject")
+            {
+                ph._player1.RemoveAt(i);
+            }if (ph._player2[i].name == "NullGameObject")
+            {
+                ph._player2.RemoveAt(i);
+            }if (ph._player3[i].name == "NullGameObject" && gs.no_Players > 2)
+            {
+                ph._player3.RemoveAt(i);
+            }if (ph._player4[i].name == "NullGameObject" && gs.no_Players == 4)
+            {
+                ph._player4.RemoveAt(i);
+            }
+        }
+        var treasuer1 = treasureDeck._object[0];
+        var treasuer2 = treasureDeck._object[1];
+        treasureDeck._object.Remove(treasuer1);
+        treasureDeck._object.Remove(treasuer2);
+        if (ph._currentPlayer == 1)
+        {
+            ph._player1.Add(treasuer1);
+            ph._player1.Add(treasuer2);
+        }
+        else if (ph._currentPlayer == 2)
+        {
+            ph._player2.Add(treasuer1);
+            ph._player2.Add(treasuer2);
+        }
+        else if (ph._currentPlayer == 3)
+        {
+            ph._player3.Add(treasuer1);
+            ph._player3.Add(treasuer2);
+        }
+        else if (ph._currentPlayer == 4)
+        {
+            ph._player4.Add(treasuer1);
+            ph._player4.Add(treasuer2);
         }
     }
 }
