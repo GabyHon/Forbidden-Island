@@ -2,7 +2,7 @@
 
 namespace Scripts
 {
-    public class ExplorerMove : MonoBehaviour
+    public class ShoreUpExplorer : MonoBehaviour
     {
         public GameManager gm;
         public PlayeHand ph;
@@ -12,7 +12,7 @@ namespace Scripts
 
         
         
-        public void MoveExplorer()
+        public void ShoreUp()
         {
              if (currentPlayer.transform.parent.name == gm.boardPositions[0].name) 
              {
@@ -778,8 +778,14 @@ namespace Scripts
 
         private void ifContents()
         {
-            gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
-            gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+            var n = o.name;
+            for (int i = 0; i < gm.tiles.Count; i++)
+            {
+                if (n == gm.tiles[i].name)
+                {
+                    gm.flooded[i] = false;
+                }
+            }
             _actions._actions = true;
         }
     }

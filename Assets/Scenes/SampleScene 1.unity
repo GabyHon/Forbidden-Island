@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 132779379}
   - component: {fileID: 132779380}
   m_Layer: 0
-  m_Name: the_Statue_of_the_Wind (4)
+  m_Name: the_Statue_of_the_Wind
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1163,7 +1163,7 @@ GameObject:
   - component: {fileID: 188647782}
   - component: {fileID: 188647783}
   m_Layer: 0
-  m_Name: The_Earth_Stone (1)
+  m_Name: The_Earth_Stone
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1668,7 +1668,7 @@ GameObject:
   - component: {fileID: 226008159}
   - component: {fileID: 226008160}
   m_Layer: 0
-  m_Name: the_Ocean_Chalice (3)
+  m_Name: the_Ocean_Chalice
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1847,7 +1847,7 @@ GameObject:
   - component: {fileID: 239038823}
   - component: {fileID: 239038824}
   m_Layer: 0
-  m_Name: Sand_Bags (1)
+  m_Name: Sand_Bags
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2102,6 +2102,9 @@ MonoBehaviour:
   messengerMove: {fileID: 245481055}
   engineerMove: {fileID: 245481054}
   navigatorMove: {fileID: 245481053}
+  gs: {fileID: 0}
+  shoreUpExplorer: {fileID: 0}
+  _shoreUp: {fileID: 0}
 --- !u!114 &245481053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2117,10 +2120,9 @@ MonoBehaviour:
   gm: {fileID: 0}
   ph: {fileID: 0}
   o: {fileID: 0}
-  actions: 0
   currentPlayer: {fileID: 0}
-  navigatorAbility: 0
   _actions: {fileID: 245481052}
+  navigatorAbility: 0
 --- !u!114 &245481054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2136,7 +2138,6 @@ MonoBehaviour:
   gm: {fileID: 0}
   ph: {fileID: 0}
   o: {fileID: 0}
-  actions: 0
   currentPlayer: {fileID: 0}
   _actions: {fileID: 245481052}
 --- !u!114 &245481055
@@ -2154,7 +2155,6 @@ MonoBehaviour:
   gm: {fileID: 0}
   ph: {fileID: 0}
   o: {fileID: 0}
-  actions: 0
   currentPlayer: {fileID: 0}
   _actions: {fileID: 245481052}
 --- !u!114 &245481056
@@ -2172,7 +2172,6 @@ MonoBehaviour:
   gm: {fileID: 0}
   ph: {fileID: 0}
   o: {fileID: 0}
-  actions: 0
   currentPlayer: {fileID: 0}
   _actions: {fileID: 245481052}
 --- !u!114 &245481057
@@ -2213,7 +2212,6 @@ MonoBehaviour:
   gm: {fileID: 0}
   ph: {fileID: 0}
   o: {fileID: 0}
-  actions: 0
   currentPlayer: {fileID: 0}
   _actions: {fileID: 245481052}
 --- !u!1 &269715560
@@ -3991,7 +3989,7 @@ GameObject:
   - component: {fileID: 607495572}
   - component: {fileID: 607495573}
   m_Layer: 0
-  m_Name: Waters_Rise (1)
+  m_Name: Waters_Rise
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4750,7 +4748,7 @@ GameObject:
   - component: {fileID: 667246160}
   - component: {fileID: 667246161}
   m_Layer: 0
-  m_Name: the_Crystal_of_Fire (3)
+  m_Name: the_Crystal_of_Fire
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5698,7 +5696,7 @@ GameObject:
   - component: {fileID: 794795171}
   - component: {fileID: 794795172}
   m_Layer: 0
-  m_Name: the_Crystal_of_Fire (1)
+  m_Name: the_Crystal_of_Fire
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6598,7 +6596,7 @@ GameObject:
   - component: {fileID: 930895077}
   - component: {fileID: 930895078}
   m_Layer: 0
-  m_Name: The_Earth_Stone (2)
+  m_Name: The_Earth_Stone
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7001,7 +6999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &971233183
 Transform:
   m_ObjectHideFlags: 0
@@ -7609,7 +7607,7 @@ GameObject:
   - component: {fileID: 1026940898}
   - component: {fileID: 1026940899}
   m_Layer: 0
-  m_Name: The_Earth_Stone (3)
+  m_Name: The_Earth_Stone
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7723,7 +7721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1058509325
 Transform:
   m_ObjectHideFlags: 0
@@ -9087,7 +9085,7 @@ GameObject:
   - component: {fileID: 1289982917}
   - component: {fileID: 1289982918}
   m_Layer: 0
-  m_Name: Waters_Rise (2)
+  m_Name: Waters_Rise
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9831,7 +9829,7 @@ GameObject:
   - component: {fileID: 1365307644}
   - component: {fileID: 1365307645}
   m_Layer: 0
-  m_Name: Helicopter_Lift (1)
+  m_Name: Helicopter_Lift
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10112,7 +10110,7 @@ GameObject:
   - component: {fileID: 1376052088}
   - component: {fileID: 1376052089}
   m_Layer: 0
-  m_Name: the_Statue_of_the_Wind (1)
+  m_Name: the_Statue_of_the_Wind
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10445,7 +10443,7 @@ GameObject:
   - component: {fileID: 1397174328}
   - component: {fileID: 1397174329}
   m_Layer: 0
-  m_Name: The_Earth_Stone (4)
+  m_Name: The_Earth_Stone
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10959,7 +10957,7 @@ GameObject:
   - component: {fileID: 1472719814}
   - component: {fileID: 1472719815}
   m_Layer: 0
-  m_Name: the_Statue_of_the_Wind (3)
+  m_Name: the_Statue_of_the_Wind
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11070,7 +11068,7 @@ GameObject:
   - component: {fileID: 1481606781}
   - component: {fileID: 1481606782}
   m_Layer: 0
-  m_Name: the_Crystal_of_Fire (2)
+  m_Name: the_Crystal_of_Fire
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11647,7 +11645,7 @@ GameObject:
   - component: {fileID: 1591205277}
   - component: {fileID: 1591205278}
   m_Layer: 0
-  m_Name: the_Statue_of_the_Wind (2)
+  m_Name: the_Statue_of_the_Wind
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12867,7 +12865,7 @@ GameObject:
   - component: {fileID: 1782325228}
   - component: {fileID: 1782325229}
   m_Layer: 0
-  m_Name: the_Ocean_Chalice (1)
+  m_Name: the_Ocean_Chalice
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13312,7 +13310,7 @@ GameObject:
   - component: {fileID: 1831055209}
   - component: {fileID: 1831055210}
   m_Layer: 0
-  m_Name: the_Ocean_Chalice (4)
+  m_Name: the_Ocean_Chalice
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14301,7 +14299,7 @@ GameObject:
   - component: {fileID: 1917568938}
   - component: {fileID: 1917568939}
   m_Layer: 0
-  m_Name: the_Crystal_of_Fire (4)
+  m_Name: the_Crystal_of_Fire
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15313,7 +15311,7 @@ GameObject:
   - component: {fileID: 2014499289}
   - component: {fileID: 2014499290}
   m_Layer: 0
-  m_Name: the_Ocean_Chalice (2)
+  m_Name: the_Ocean_Chalice
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15457,7 +15455,7 @@ GameObject:
   - component: {fileID: 2030987760}
   - component: {fileID: 2030987761}
   m_Layer: 0
-  m_Name: Helicopter_Lift (2)
+  m_Name: Helicopter_Lift
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 
 {
-    [SerializeField] private List<GameObject> tiles;
+    public List<GameObject> tiles;
     public GameObject[] boardPositions;
     public bool[] flooded;
     public List<GameObject> treasureCards;
