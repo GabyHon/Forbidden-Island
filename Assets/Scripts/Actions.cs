@@ -2,11 +2,12 @@
 using System.Linq;
 using Scripts;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Actions : MonoBehaviour
 {
-    private bool move = false;
+    public bool move = false;
     private bool shoreUp = false;
     public bool treasure = false;
     private bool capture = false;
@@ -141,10 +142,24 @@ public class Actions : MonoBehaviour
                             break;
                         }
                         case "Pilot":
-                        {
-                            pilotMove.pilotAction = pilotAction;
-                            pilotMove.moveButton = moveButton;
-                            pilotMove.shoreUpButton = shoreUpButton;
+                        { 
+                            if (pilotAbility)
+                            {
+                                Debug.Log("pilot ability");
+                                if (Input.GetMouseButton(0))
+                                {
+                                    gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
+                                    gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
+                                    pilotAbility = false;
+                                    move = false;
+                                    actions++;
+                                }
+                            }
+                            else
+                            {
+                                pilotMove.pilotAction = pilotAction;
+                                pilotMove.moveButton = moveButton;
+                                pilotMove.shoreUpButton = shoreUpButton;
                                 pilotMove.treasureButton = treasureButton;
                                 pilotMove.captureButton = captureButton;
                                 pilotMove.pilotAbility = pilotAbility;
@@ -158,6 +173,8 @@ public class Actions : MonoBehaviour
                                     actions++;
                                     _actions = false;
                                 }
+                            }
+
                             break;
                         }
                         case "Explorer":// still to do
@@ -220,7 +237,6 @@ public class Actions : MonoBehaviour
                     }
                 }
                 Debug.Log(hit.transform.gameObject.transform.parent);
-                move = false;
             }
         }
         if (shoreUp)
@@ -912,7 +928,18 @@ public class Actions : MonoBehaviour
             DrawTreasure();
             if (gm.difficulty < 2)
             {
-                floodCard1.transform.position = floodPlacement.transform.position; 
+                for (int i = 0; i < tiles._object.Count; i++)
+                {
+                    if (tiles._object[i].name == floodCard1.name)
+                    {
+                        Debug.Log("less 2");
+                        var tilePos = tiles._object.IndexOf(tiles._object[i]);
+                        gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
+                    }
+                }
+                
                 for (int i = 0; i < tiles._object.Count; i++)
                 {
                     if (tiles._object[i].name == floodCard2.name)
@@ -920,52 +947,157 @@ public class Actions : MonoBehaviour
                         Debug.Log("less 2");
                         var tilePos = tiles._object.IndexOf(tiles._object[i]);
                         gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
                     }
                 }
-                // wait
-                floodCard1.transform.position = position;
-                floodCard2.transform.position = floodPlacement.transform.position;
-                // wait
-                floodCard2.transform.position = position;
             }
             else if (gm.difficulty < 5)
             {
-                floodCard1.transform.position = floodPlacement.transform.position; 
-                new WaitForSeconds(2f);
                 for (int i = 0; i < tiles._object.Count; i++)
                 {
                     if (tiles._object[i].name == floodCard1.name)
                     {
+                        Debug.Log("less 2");
                         var tilePos = tiles._object.IndexOf(tiles._object[i]);
                         gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
                     }
                 }
-                floodCard1.transform.position = offHand.transform.position;
-                floodCard2.transform.position = floodPlacement.transform.position;
-                new WaitForSeconds(2f);
+                
                 for (int i = 0; i < tiles._object.Count; i++)
                 {
                     if (tiles._object[i].name == floodCard2.name)
                     {
+                        Debug.Log("less 2");
                         var tilePos = tiles._object.IndexOf(tiles._object[i]);
                         gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
                     }
                 }
-                floodCard2.transform.position = offHand.transform.position;
-                new WaitForSeconds(2f);
                 for (int i = 0; i < tiles._object.Count; i++)
                 {
                     if (tiles._object[i].name == floodCard3.name)
                     {
+                        Debug.Log("less 2");
                         var tilePos = tiles._object.IndexOf(tiles._object[i]);
                         gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
                     }
                 }
-                floodCard3.transform.position = floodPlacement.transform.position;
-                new WaitForSeconds(2f);
-                floodCard1.transform.position = position;
             }
-            
+            else if (gm.difficulty < 7)
+            {
+                for (int i = 0; i < tiles._object.Count; i++)
+                {
+                    if (tiles._object[i].name == floodCard1.name)
+                    {
+                        Debug.Log("less 2");
+                        var tilePos = tiles._object.IndexOf(tiles._object[i]);
+                        gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
+                    }
+                }
+                for (int i = 0; i < tiles._object.Count; i++)
+                {
+                    if (tiles._object[i].name == floodCard2.name)
+                    {
+                        Debug.Log("less 2");
+                        var tilePos = tiles._object.IndexOf(tiles._object[i]);
+                        gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
+                    }
+                }
+                for (int i = 0; i < tiles._object.Count; i++)
+                {
+                    if (tiles._object[i].name == floodCard3.name)
+                    {
+                        Debug.Log("less 2");
+                        var tilePos = tiles._object.IndexOf(tiles._object[i]);
+                        gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
+                    }
+                }
+                for (int i = 0; i < tiles._object.Count; i++)
+                {
+                    if (tiles._object[i].name == floodCard4.name)
+                    {
+                        Debug.Log("less 2");
+                        var tilePos = tiles._object.IndexOf(tiles._object[i]);
+                        gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
+                    }
+                }
+            }
+            else if (gm.difficulty < 9)
+            {
+                for (int i = 0; i < tiles._object.Count; i++)
+                {
+                    if (tiles._object[i].name == floodCard1.name)
+                    {
+                        Debug.Log("less 2");
+                        var tilePos = tiles._object.IndexOf(tiles._object[i]);
+                        gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
+                    }
+                }
+                for (int i = 0; i < tiles._object.Count; i++)
+                {
+                    if (tiles._object[i].name == floodCard2.name)
+                    {
+                        Debug.Log("less 2");
+                        var tilePos = tiles._object.IndexOf(tiles._object[i]);
+                        gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
+                    }
+                }
+                for (int i = 0; i < tiles._object.Count; i++)
+                {
+                    if (tiles._object[i].name == floodCard3.name)
+                    {
+                        Debug.Log("less 2");
+                        var tilePos = tiles._object.IndexOf(tiles._object[i]);
+                        gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
+                    }
+                }
+                for (int i = 0; i < tiles._object.Count; i++)
+                {
+                    if (tiles._object[i].name == floodCard4.name)
+                    {
+                        Debug.Log("less 2");
+                        var tilePos = tiles._object.IndexOf(tiles._object[i]);
+                        gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
+                    }
+                }
+                for (int i = 0; i < tiles._object.Count; i++)
+                {
+                    if (tiles._object[i].name == floodCard5.name)
+                    {
+                        Debug.Log("less 2");
+                        var tilePos = tiles._object.IndexOf(tiles._object[i]);
+                        gm.flooded[tilePos] = true;
+                        tiles._object[i].gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
+                    }
+                }
+            }
+            else if (gm.difficulty == 9)
+            {
+                SceneManager.LoadScene("LoseEndScene");
+            }
             ph._currentPlayer++;
             actions = 0;
         }
@@ -978,15 +1110,34 @@ public class Actions : MonoBehaviour
             if (ph._player1[i].name == "NullGameObject")
             {
                 ph._player1.RemoveAt(i);
-            }if (ph._player2[i].name == "NullGameObject")
+                i--;
+            }
+        }
+
+        for (int i = 0; i < ph._player2.Count; i++)
+        {
+            if (ph._player2[i].name == "NullGameObject")
             {
                 ph._player2.RemoveAt(i);
-            }if (ph._player3[i].name == "NullGameObject" && gs.no_Players > 2)
+                i--;
+            }
+        }
+
+        for (int i = 0; i < ph._player3.Count; i++)
+        {
+            if (ph._player3[i].name == "NullGameObject" && gs.no_Players > 2)
             {
                 ph._player3.RemoveAt(i);
-            }if (ph._player4[i].name == "NullGameObject" && gs.no_Players == 4)
+                i--;
+            }
+        }
+
+        for (int i = 0; i < ph._player4.Count; i++)
+        {
+            if (ph._player4[i].name == "NullGameObject" && gs.no_Players == 4)
             {
                 ph._player4.RemoveAt(i);
+                i--;
             }
         }
         var treasuer1 = treasureDeck._object[0];

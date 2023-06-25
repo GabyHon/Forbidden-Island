@@ -1079,6 +1079,8 @@ namespace Scripts
             gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
             gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
             _actions._actions = true;
+            _actions.move = false;
+
         }
     }
 }

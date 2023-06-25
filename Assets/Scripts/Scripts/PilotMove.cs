@@ -21,16 +21,8 @@ namespace Scripts
 
         public void MovePilot()
         {
-             pilotAction.gameObject.SetActive(true);
-                            moveButton.gameObject.SetActive(false);
-                            shoreUpButton.gameObject.SetActive(false);
-                            treasureButton.gameObject.SetActive(false);
-                            captureButton.gameObject.SetActive(false);
-                            if (pilotAbility)
-                            {
-                                ifContent();
-                            }
-                            else if (currentPlayer.transform.parent.name == gm.boardPositions[0].name)
+                            
+                            if (currentPlayer.transform.parent.name == gm.boardPositions[0].name)
                             {
                                 if (o.transform.parent.name == gm.boardPositions[1].name) 
                                 {
@@ -315,6 +307,11 @@ namespace Scripts
                                     ifContent();
 
                                 }
+                                else if (o.transform.parent.name == gm.boardPositions[14].name) 
+                                { 
+                                    ifContent();
+
+                                }
                             }
                             else if (currentPlayer.transform.parent.name == gm.boardPositions[16].name)
                             { 
@@ -459,11 +456,8 @@ namespace Scripts
             gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
             gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
             _actions._actions = true;
-            pilotAction.gameObject.SetActive(false);
-            moveButton.gameObject.SetActive(true);
-            shoreUpButton.gameObject.SetActive(true);
-            treasureButton.gameObject.SetActive(true);
-            captureButton.gameObject.SetActive(true);
+            _actions.move = false;
+
         }
     }
 }

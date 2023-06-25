@@ -503,7 +503,7 @@ namespace Scripts
                                     ifContents();
 
                                 }
-                                else if (o.transform.parent.name == gm.boardPositions[3].name) 
+                                else if (o.transform.parent.name == gm.boardPositions[14].name) 
                                 {
                                     ifContents();
 
@@ -781,6 +781,8 @@ namespace Scripts
             gm.players[ph._currentPlayer - 1].transform.position = o.transform.position;
             gm.players[ph._currentPlayer - 1].transform.parent = o.transform.parent.transform;
             _actions._actions = true;
+            _actions.move = false;
+
         }
     }
 }
